@@ -1210,11 +1210,12 @@ div.svelte-awbtu4 .gradio-file {
 #txtimg_hr_finalres {
   color: var(--colorPrimary) !important;
 }
+/*==Toxi-added====================================== */
 #interrogate,
 #deepbooru {
-  max-height: 72px;
+  max-height: 84px;
 }
-/*==Toxi-added====================================== */
+/* Requires extra network to be set to thumbnails, probably */
 .extra-network-thumbs .card {
   height: 12em;
   width: 9em;
