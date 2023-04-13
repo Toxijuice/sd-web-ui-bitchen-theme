@@ -1,13 +1,13 @@
 {
-  "name": "sd-web-ui-kitchen-theme",
-  "version": "1.0.1",
+  "name": "sd-web-ui-bitchen-theme",
+  "version": "1.0.0",
   "repository": {
     "type": "git",
-    "url": "https://github.com/canisminor1990/sd-web-ui-kitchen-theme.git"
+    "url": "https://github.com/toxijuice/sd-web-ui-bitchen-theme.git"
   },
   "license": "MIT",
   "private": true,
-  "author": "canisminor1990 <i@canisminor.cc>",
+  "author": "toxijuice (edit), canisminor1990 (original)",
   "sideEffects": false,
   "main": "style.css",
   "scripts": {
