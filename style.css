@@ -1055,6 +1055,10 @@ input[type='range']:active::-ms-thumb {
 #img2img_skip {
   border-radius: 0 var(--borderRadius) var(--borderRadius) 0 !important;
 }
+.gradio-checkbox:hover label {
+  color: var(--colorPrimary) !important;
+  transition: all 0.05s ease-in-out;
+}
 .gradio-dropdown:hover .wrap span {
   color: var(--colorPrimary) !important;
   transition: all 0.05s ease-in-out;
