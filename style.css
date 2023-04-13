@@ -1150,12 +1150,8 @@ div.svelte-awbtu4 .gradio-file {
   opacity: 1;
 }
 /* Plugin */
-[id$='_row_aspect_ratio'],
 [id$='_row_resolutions'] {
-  display: inline-block !important;
-  margin: 0;
-  padding: 0;
-  width: 180px !important;
+  margin-top: -12px;
 }
 #image_browser_tabs_container [id$='_browser_gallery_controls'] {
   align-items: flex-end;
@@ -1177,3 +1173,13 @@ div.svelte-awbtu4 .gradio-file {
 #deepbooru {
   max-height: 72px;
 }
+/*==Toxi-added====================================== */
+.extra-network-thumbs .card {
+  height: 12em;
+  width: 9em;
+}
+/*sd-webui-ar*/
+button#arc_show_calculator_button {
+  background-color: var(--background-fill-primary) !important;
+}
+/*================================================== */
