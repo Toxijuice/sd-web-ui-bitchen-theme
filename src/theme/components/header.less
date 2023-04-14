@@ -25,8 +25,10 @@
     margin-right: 36px;
     margin-left: 16px;
     margin-top: 12px;
+    filter: drop-shadow(0px 0px 3px var(--colorPrimary)) drop-shadow(0px 0px 15px var(--colorAccent));
     @media screen and (max-width: 640px) {
       display: none;
+      filter: none;
     }
   }
 
@@ -83,7 +85,7 @@
       top: 0;
       left: 0;
       border-block-end: 1px solid var(--colorBorderSecondary);
-      background: var(--colorFillQuaternary);
+      background: var(--colorFillNav);
       backdrop-filter: blur(24px);
       z-index: -1;
     }

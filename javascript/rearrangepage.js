@@ -2,10 +2,24 @@
 
 // If anyone knows how to rearrange the panels better
 // please let me know. This seems really bad.
-var rearranged = false;
+var bitchenTabsRearranged = false;
 
 class PageRearranger {
+    
     static rearrangePage() {
+        function safereparent(parent, child) {
+            if (parent !== null && child !== null) {
+                parent.appendChild(child);
+            } else {
+                if (parent === null) {
+                    console.error("Can't append child, parent is null.");
+                }
+                if (child === null) {
+                    console.error("Can't append child, child is null.");
+                }
+            }
+        }
+
         //txt2img
         var txt2imgtoprow = document.getElementById("txt2img_toprow");
         var txt2imgtoprowparent = txt2imgtoprow.parentElement;
@@ -19,24 +33,36 @@ class PageRearranger {
         var txt2imgpresetmanager = document.getElementById("txt2img_preset_manager_accordion");
         var txt2imgactions = document.getElementById("txt2img_actions_column");
         var txt2imgtools = document.getElementById("txt2img_tools");
+        var txt2imgtoolsinner = txt2imgtools.children[0];
         var txt2imgstylesrow = document.getElementById("txt2img_styles_row");
+        var txt2imgstylesrefresh = txt2imgstylesrow.children[0].children[1];
+        var txt2imgstylespanel = document.getElementById("txt2img_styles");
+        var txt2imgstyleslabel = txt2imgstylespanel.children[1];
+        var txt2imgstyleslabelinnerwrap = txt2imgstyleslabel.children[1].children[0];
         var txt2imghtmlinfo = document.getElementById("html_info_txt2img");
         var txt2imgpromptdetails = txt2imghtmlinfo.parentElement;
         var txt2imgpromptcontainer = document.getElementById("txt2img_prompt_container");
         var txt2imgprompt = txt2imgpromptcontainer.children[0];
         var txt2imgnegprompt = txt2imgpromptcontainer.children[1];
 
-        txt2imgbottomhalf.appendChild(txt2imgsettingspanel);
+        safereparent(txt2imgbottomhalf, txt2imgsettingspanel);
 
-        txt2imgresultspanel.appendChild(txt2imgstylesrow);
-        txt2imgresultspanel.appendChild(txt2imgtools);
-        txt2imgresultspanel.appendChild(txt2imggeneratebox);
-        txt2imgresultspanel.appendChild(txt2imggallerycontainer);
-        txt2imgresultspanel.appendChild(txt2imggallerybuttons);
-        txt2imgresultspanel.appendChild(txt2imgpromptdetails);
+        safereparent(txt2imgstylespanel, txt2imgstylesrefresh);
+        safereparent(txt2imgstylespanel, txt2imgstyleslabel);
 
-        txt2imgactions.appendChild(txt2imgnegprompt);
-        txt2imgtoprowparent.appendChild(txt2imgpresetmanager);
+        safereparent(txt2imgstyleslabelinnerwrap, txt2imgtoolsinner);
+
+        safereparent(txt2imgresultspanel, txt2imgstylesrow);
+        safereparent(txt2imgresultspanel, txt2imggeneratebox);
+        safereparent(txt2imgresultspanel, txt2imggallerycontainer);
+        safereparent(txt2imgresultspanel, txt2imggallerybuttons);
+        safereparent(txt2imgresultspanel, txt2imgpromptdetails);
+
+        safereparent(txt2imgpromptcontainer, txt2imgnegprompt);
+
+        safereparent(txt2imgtoprowparent, txt2imgpresetmanager);
+        safereparent(txt2imgtoprowparent, txt2imgactions);
+        // safereparent(txt2imgtoprowparent, txt2imgtools);
 
         //img2img
         var img2imgtoprow = document.getElementById("img2img_toprow");
@@ -51,7 +77,12 @@ class PageRearranger {
         var img2imgpresetmanager = document.getElementById("img2img_preset_manager_accordion");
         var img2imgactions = document.getElementById("img2img_actions_column");
         var img2imgtools = document.getElementById("img2img_tools");
+        var img2imgtoolsinner = img2imgtools.children[0];
         var img2imgstylesrow = document.getElementById("img2img_styles_row");
+        var img2imgstylesrefresh = img2imgstylesrow.children[0].children[1];
+        var img2imgstylespanel = document.getElementById("img2img_styles");
+        var img2imgstyleslabel = img2imgstylespanel.children[1];
+        var img2imgstyleslabelinnerwrap = img2imgstyleslabel.children[1].children[0];
         var img2imghtmlinfo = document.getElementById("html_info_img2img");
         var img2imgpromptdetails = img2imghtmlinfo.parentElement;
         var img2imgpromptcontainer = document.getElementById("img2img_prompt_container");
@@ -61,29 +92,36 @@ class PageRearranger {
         var img2imginterrogate = document.getElementById("interrogate");
         var img2imginterrogatecol = img2imginterrogate.parentElement;
 
-        img2imgbottomhalf.appendChild(img2imgsettingspanel);
+        safereparent(img2imgbottomhalf, img2imgsettingspanel);
 
-        img2imgresultspanel.appendChild(img2imgstylesrow);
-        img2imgresultspanel.appendChild(img2imgtools);
-        img2imgresultspanel.appendChild(img2imggeneratebox);
-        img2imgresultspanel.appendChild(img2imggallerycontainer);
-        img2imgresultspanel.appendChild(img2imggallerybuttons);
-        img2imgresultspanel.appendChild(img2imgpromptdetails);
+        safereparent(img2imgstylespanel, img2imgstylesrefresh);
+        safereparent(img2imgstylespanel, img2imgstyleslabel);
 
-        img2imgactions.appendChild(img2imgnegprompt);
-        img2imgtoprowparent.appendChild(img2imgpresetmanager);
-        img2imgtoprow.appendChild(img2imginterrogate);
-        img2imgtoprow.appendChild(img2imgdeepbooru);
-        img2imgtoprow.appendChild(img2imgpromptcontainer);
-        img2imgtoprow.appendChild(img2imgactions);
+        safereparent(img2imgstyleslabelinnerwrap, img2imgtoolsinner);
 
-        img2imgtoprowparent.appendChild(img2imginterrogatecol);
+        safereparent(img2imgresultspanel, img2imgstylesrow);
+        safereparent(img2imgresultspanel, img2imggeneratebox);
+        safereparent(img2imgresultspanel, img2imggallerycontainer);
+        safereparent(img2imgresultspanel, img2imggallerybuttons);
+        safereparent(img2imgresultspanel, img2imgpromptdetails);
+
+        safereparent(img2imgpromptcontainer, img2imginterrogate);
+        safereparent(img2imgpromptcontainer, img2imgdeepbooru);
+        safereparent(img2imgpromptcontainer, img2imgprompt);
+        safereparent(img2imgpromptcontainer, img2imgnegprompt);
+
+        safereparent(img2imgtoprowparent, img2imgpresetmanager);
+        safereparent(img2imgtoprow, img2imgpromptcontainer);
+        
+        safereparent(img2imgtoprowparent, img2imginterrogatecol);
+        safereparent(img2imgtoprowparent, img2imgactions);
+        // safereparent(img2imgtoprowparent, img2imgtools);
     }
 }
 
 onUiTabChange(() => {
-    if (!rearranged) {
+    if (!bitchenTabsRearranged) {
         PageRearranger.rearrangePage();
-        rearranged = true;
+        bitchenTabsRearranged = true;
     }
 });

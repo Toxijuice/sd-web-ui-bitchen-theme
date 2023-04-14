@@ -5,10 +5,23 @@
   overflow: hidden;
   text-overflow: ellipsis;
   outline: 0px solid var(--colorPrimary);
+  &:hover{
+    outline: 2px solid var(--colorPrimary);
+  }
 }
 
-.gradio-button:hover {
-  outline: 2px solid var(--colorPrimary);
+#txt2img_generate,
+#img2img_generate {
+	background: var(--button-primary-background-fill) !important;
+
+  &:hover {
+    background: var(--button-secondary-background-fill) !important;
+  }
+
+  &:active {
+    background: var(--colorErrorActive) !important;
+  }
+  
 }
 
 #txt2img_interrupt,
@@ -16,15 +29,19 @@
 #img2img_interrupt,
 #img2img_skip {
   background: var(--colorError) !important;
+  outline: 0px solid var(--colorError);
 
   &:hover {
     background: var(--colorErrorHover) !important;
+    outline: 2px solid var(--colorErrorHover);
   }
 
   &:active {
     background: var(--colorErrorActive) !important;
+    outline: 2px solid var(--colorErrorActive);
   }
 }
+
 
 #txt2img_interrupt,
 #img2img_interrupt {

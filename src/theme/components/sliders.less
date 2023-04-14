@@ -10,7 +10,7 @@ input[type='range'] {
     cursor: pointer !important;
     height: 6px !important;
     border-radius: 3px !important;
-    background: var(--colorFill) !important;
+    background: var(--colorPrimaryBg) !important;
     opacity: 0.6 !important;
   }
 
@@ -24,11 +24,11 @@ input[type='range'] {
     cursor: pointer !important;
     height: 6px !important;
     border-radius: 3px !important;
-    background: var(--colorBgElevated) !important;
+    background: var(--colorPrimaryBg) !important;
   }
 
   &:hover::-moz-range-track {
-    background: var(--colorBgElevated) !important;
+    background: var(--colorPrimaryBg) !important;
     transition: all 0.05s ease-in-out;
   }
 
@@ -36,11 +36,11 @@ input[type='range'] {
     cursor: pointer !important;
     height: 6px !important;
     border-radius: 3px !important;
-    background: linear-gradient(90deg, var(--colorTextTertiary) 100%, var(--colorPrimary) 200%) !important;
+    background: linear-gradient(90deg, var(--colorAccent) 100%, var(--colorPrimary) 200%) !important;
   }
 
   &:hover::-moz-range-progress {
-    background: linear-gradient(90deg, var(--colorTextTertiary) 0%, var(--colorPrimary) 100%) !important;
+    background: linear-gradient(90deg, var(--colorAccent) 0%, var(--colorPrimary) 100%) !important;
     transition: all 1.0s ease-in-out;
   }
 

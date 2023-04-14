@@ -312,6 +312,7 @@ template {
   --colorPrimaryBorderHover: #15417e;
   --colorPrimaryHover: #3c89e8;
   --colorPrimary: #1668dc;
+  --colorAccent: var(--colorPrimary);
   --colorPrimaryActive: #1554ad;
   --colorPrimaryTextHover: #3c89e8;
   --colorPrimaryText: #1668dc;
@@ -326,10 +327,11 @@ template {
   --colorErrorTextHover: #e86e6b;
   --colorErrorText: #dc4446;
   --colorErrorTextActive: #ad393a;
-  --colorText: rgba(255, 255, 255, 0.85);
-  --colorTextSecondary: rgba(255, 255, 255, 0.65);
-  --colorTextTertiary: rgba(255, 255, 255, 0.45);
-  --colorTextQuaternary: rgba(255, 255, 255, 0.25);
+  --colorText: #ffffff;
+  --colorTextSecondary: rgba(255, 255, 255, 0.95);
+  --colorTextTertiary: rgba(255, 255, 255, 0.85);
+  --colorTextQuaternary: rgba(255, 255, 255, 0.75);
+  --colorFillNav: rgba(0, 0, 0, 0.33);
   --colorBgContainer: #141414;
   --colorBgElevated: #1f1f1f;
   --colorBgLayout: #141414;
@@ -515,7 +517,7 @@ template {
   --button-shadow-active: none;
   --button-shadow-hover: none;
   --button-small-text-weight: 400;
-  --button-transition: background-color 0.2s ease;
+  --button-transition: background-color 0.025s ease;
   --button-border-width: var(--input-border-width);
   --button-cancel-background-fill: var(--button-secondary-background-fill);
   --button-cancel-background-fill-hover: var(--button-cancel-background-fill);
@@ -570,7 +572,7 @@ template {
   /* Input */
   --input-border-width: 0;
   --input-shadow: none;
-  --input-text-weight: 400;
+  --input-text-weight: 500;
   --input-background-fill: var(--neutral-100);
   --input-background-fill-focus: var(--secondary-500);
   --input-background-fill-hover: var(--input-background-fill);
@@ -580,7 +582,7 @@ template {
   --input-padding: var(--spacing-xl);
   --input-placeholder-color: var(--neutral-400);
   --input-radius: var(--radius-lg);
-  --input-shadow-focus: var(--input-shadow);
+  --input-shadow-focus: 0px 0px 8px var(--colorPrimary);
   --input-text-size: var(--text-md);
   /* Table */
   --table-even-background-fill: white;
@@ -729,7 +731,7 @@ template {
   --button-shadow-active: none;
   --button-shadow-hover: none;
   --button-small-text-weight: 400;
-  --button-transition: background-color 0.2s ease;
+  --button-transition: background-color 0.025s ease;
   --button-border-width: var(--input-border-width);
   --button-cancel-background-fill: var(--button-secondary-background-fill);
   --button-cancel-background-fill-hover: var(--button-cancel-background-fill);
@@ -782,7 +784,7 @@ template {
   /* Input */
   --input-border-width: 0;
   --input-shadow: none;
-  --input-text-weight: 400;
+  --input-text-weight: 500;
   --input-background-fill: var(--neutral-700);
   --input-background-fill-focus: var(--secondary-600);
   --input-background-fill-hover: var(--input-background-fill);
@@ -792,7 +794,7 @@ template {
   --input-placeholder-color: var(--neutral-500);
   --input-padding: var(--spacing-xl);
   --input-radius: var(--radius-lg);
-  --input-shadow-focus: var(--input-shadow);
+  --input-shadow-focus: 0px 0px 8px var(--colorPrimary);
   --input-text-size: var(--text-md);
   /* Table */
   --table-border-color: var(--neutral-700);
@@ -846,10 +848,12 @@ template {
   margin-right: 36px;
   margin-left: 16px;
   margin-top: 12px;
+  filter: drop-shadow(0px 0px 3px var(--colorPrimary)) drop-shadow(0px 0px 15px var(--colorAccent));
 }
 @media screen and (max-width: 640px) {
   #quicksettings::before {
     display: none;
+    filter: none;
   }
 }
 #quicksettings .dropdown-arrow {
@@ -898,7 +902,7 @@ template {
   top: 0;
   left: 0;
   border-block-end: 1px solid var(--colorBorderSecondary);
-  background: var(--colorFillQuaternary);
+  background: var(--colorFillNav);
   backdrop-filter: blur(24px);
   z-index: -1;
 }
@@ -928,7 +932,7 @@ input[type='range']::-webkit-slider-runnable-track {
   cursor: pointer !important;
   height: 6px !important;
   border-radius: 3px !important;
-  background: var(--colorFill) !important;
+  background: var(--colorPrimaryBg) !important;
   opacity: 0.6 !important;
 }
 input[type='range']:hover::-webkit-slider-runnable-track {
@@ -940,20 +944,20 @@ input[type='range']::-moz-range-track {
   cursor: pointer !important;
   height: 6px !important;
   border-radius: 3px !important;
-  background: var(--colorBgElevated) !important;
+  background: var(--colorPrimaryBg) !important;
 }
 input[type='range']:hover::-moz-range-track {
-  background: var(--colorBgElevated) !important;
+  background: var(--colorPrimaryBg) !important;
   transition: all 0.05s ease-in-out;
 }
 input[type='range']::-moz-range-progress {
   cursor: pointer !important;
   height: 6px !important;
   border-radius: 3px !important;
-  background: linear-gradient(90deg, var(--colorTextTertiary) 100%, var(--colorPrimary) 200%) !important;
+  background: linear-gradient(90deg, var(--colorAccent) 100%, var(--colorPrimary) 200%) !important;
 }
 input[type='range']:hover::-moz-range-progress {
-  background: linear-gradient(90deg, var(--colorTextTertiary) 0%, var(--colorPrimary) 100%) !important;
+  background: linear-gradient(90deg, var(--colorAccent) 0%, var(--colorPrimary) 100%) !important;
   transition: all 1s ease-in-out;
 }
 input[type='range']::-ms-fill-upper,
@@ -1028,23 +1032,38 @@ input[type='range']:active::-ms-thumb {
 .gradio-button:hover {
   outline: 2px solid var(--colorPrimary);
 }
+#txt2img_generate,
+#img2img_generate {
+  background: var(--button-primary-background-fill) !important;
+}
+#txt2img_generate:hover,
+#img2img_generate:hover {
+  background: var(--button-secondary-background-fill) !important;
+}
+#txt2img_generate:active,
+#img2img_generate:active {
+  background: var(--colorErrorActive) !important;
+}
 #txt2img_interrupt,
 #txt2img_skip,
 #img2img_interrupt,
 #img2img_skip {
   background: var(--colorError) !important;
+  outline: 0px solid var(--colorError);
 }
 #txt2img_interrupt:hover,
 #txt2img_skip:hover,
 #img2img_interrupt:hover,
 #img2img_skip:hover {
   background: var(--colorErrorHover) !important;
+  outline: 2px solid var(--colorErrorHover);
 }
 #txt2img_interrupt:active,
 #txt2img_skip:active,
 #img2img_interrupt:active,
 #img2img_skip:active {
   background: var(--colorErrorActive) !important;
+  outline: 2px solid var(--colorErrorActive);
 }
 #txt2img_interrupt,
 #img2img_interrupt {
@@ -1099,20 +1118,20 @@ textarea:hover {
   transition: all 0.05s ease-in-out;
 }
 [id$='2img_prompt'] textarea {
-  color: rgba(208, 226, 178, 0.98) !important;
+  color: #abef3edf !important;
   max-height: 84px;
   overflow-y: auto;
 }
 [id$='2img_prompt'] textarea:focus {
-  color: rgba(244, 255, 225, 0.98) !important;
+  color: #d5ff92ff !important;
 }
 [id$='2img_neg_prompt'] textarea {
-  color: rgba(236, 210, 213, 0.98) !important;
+  color: #ea394ddf !important;
   max-height: 84px;
   overflow-y: auto;
 }
 [id$='2img_neg_prompt'] textarea:focus {
-  color: rgba(255, 240, 242, 0.98) !important;
+  color: #ea6c7bff !important;
 }
 .block.token-counter span {
   backdrop-filter: blur(24px);
@@ -1204,24 +1223,201 @@ div.svelte-awbtu4 .gradio-file {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-size-adjust: 100%;
-  background-image: radial-gradient(circle 600px at calc(100% - 300px) 300px, var(--colorPrimaryBgHover), var(--colorBgLayout));
+  background-image: radial-gradient(circle 155vh at 40px 50px, #fff -5%, var(--colorPrimary) 5%, var(--colorPrimaryBorderHover) 20%, var(--colorPrimaryBgHover) 70%, var(--colorBgLayout) 100%);
   background-repeat: no-repeat;
 }
 #txtimg_hr_finalres {
   color: var(--colorPrimary) !important;
 }
-/*==Toxi-added====================================== */
+/*==Toxi-added======================================*/
+/* Preview Various Fixes */
+.livePreview {
+  background: var(--galleryBackground) !important;
+  border: 0px solid var(--colorBorder) !important;
+  border-radius: var(--block-radius) !important;
+  scale: 0.985;
+  margin-top: 0px;
+  margin-left: 1px;
+}
+div.svelte-1oo81b7 > *:not(.absolute) {
+  border-radius: 0 !important;
+}
+/* Progress bar bg */
+.progressDiv {
+  background: var(--colorPrimaryBorderHover) !important;
+  position: relative;
+  height: 22px;
+  border-radius: var(--block-radius) !important;
+  border-bottom-left-radius: 0px !important;
+  border-bottom-right-radius: 0px !important;
+  border-top: solid 2px var(--colorAccent) !important;
+  border-right: solid 2px var(--colorAccent) !important;
+  border-left: solid 2px var(--colorAccent) !important;
+  margin-bottom: -27px;
+  z-index: 301;
+}
+.livePreview img {
+  margin-top: 1px;
+}
+/* Inpainting/Sketch Buttons */
+button[aria-label] {
+  border: 1px solid var(--colorAccent) !important;
+  stroke-width: 1.5 !important;
+}
+button[aria-label] svg {
+  stroke: #fff !important;
+  accent-color: #fff !important;
+  fill: #ffffff00 !important;
+}
+button[aria-label] path {
+  stroke: #fff !important;
+  accent-color: #fff !important;
+  fill: #ffffff00 !important;
+}
+button[aria-label] circle {
+  stroke: #fff !important;
+  accent-color: #fff !important;
+  fill: #ffffff00 !important;
+}
+button[aria-label]:hover {
+  color: var(--colorPrimary) !important;
+  border: 1px solid var(--colorPrimary) !important;
+  stroke-width: 2 !important;
+}
+button[aria-label]:hover svg {
+  stroke: var(--colorPrimary) !important;
+  accent-color: var(--colorPrimary) !important;
+  fill: #ffffff00 !important;
+}
+button[aria-label]:hover path {
+  stroke: var(--colorPrimary) !important;
+  accent-color: var(--colorPrimary) !important;
+  fill: #ffffff00 !important;
+}
+button[aria-label]:hover circle {
+  stroke: var(--colorPrimary) !important;
+  accent-color: var(--colorPrimary) !important;
+  fill: #ffffff00 !important;
+}
+/* Dropdown Border */
+.gradio-dropdown div.wrap {
+  border: solid 1px var(--colorPrimaryBorderHover) !important;
+}
+/* Textarea Border */
+textarea {
+  border: solid 1px var(--colorPrimaryBorderHover) !important;
+}
+/* Misc top borders */
+div.svelte-1oo81b7 > * + *:not(.absolute),
+#txt2img_script_container,
+#img2img_script_container,
+#txt2img_results,
+#img2img_results {
+  border-top-right-radius: 0px !important;
+  border-top-left-radius: 0px !important;
+  border-bottom-left-radius: var(--block-radius) !important;
+  border-bottom-right-radius: var(--block-radius) !important;
+  border-top: solid 4px var(--colorAccent) !important;
+}
+/* More negative prompt space */
+#txt2img_prompt_container {
+  flex-flow: row wrap;
+}
+#txt2img_prompt_container > div {
+  width: 1px;
+  flex-grow: 1;
+}
+@media screen and (max-width: 725px) {
+  #txt2img_prompt_container > div {
+    width: 100% !important;
+  }
+}
+/* More negative prompt space */
+#img2img_prompt_container {
+  flex-flow: row wrap;
+}
+#img2img_prompt_container > button {
+  width: 1px;
+  flex-grow: 0.1;
+  min-width: fit-content;
+}
+@media screen and (max-width: 1000px) {
+  #img2img_prompt_container > button {
+    width: 100% !important;
+  }
+}
+#img2img_prompt_container > div {
+  width: 1px !important;
+  flex-grow: 1;
+}
+@media screen and (max-width: 1000px) {
+  #img2img_prompt_container > div {
+    width: 100% !important;
+  }
+}
+/* Smaller styles buttons */
+#txt2img_styles button,
+#img2img_styles button {
+  min-height: 25px;
+  height: 25px;
+}
+/* Fix styles label margin */
+#txt2img_styles,
+#img2img_styles {
+  margin-top: -18px;
+}
+/* Fix styles refresh size */
+button#refresh_txt2img_styles,
+button#refresh_img2img_styles {
+  margin-bottom: 5px !important;
+  min-height: 20px !important;
+  height: 20px !important;
+  min-width: 20px !important;
+  width: 20px !important;
+  padding: 0px !important;
+  margin-right: 4px !important;
+}
+/* No top border for log */
+#html_log_txt2img,
+#html_log_img2img {
+  border-top: none !important;
+}
+/* Text highlight */
+::selection {
+  background: var(--colorPrimary);
+}
+/* Progress bar fg */
+.progressDiv .progress {
+  border-bottom-left-radius: 0px !important;
+  border-bottom-right-radius: 0px !important;
+  background: linear-gradient(90deg, var(--colorAccent) 0%, var(--colorPrimary) 100%) !important;
+  color: var(--colorText);
+}
+/* Image Preview Corner Fix */
+.preview {
+  border-radius: inherit !important;
+  padding: 15px;
+}
+.thumbnail-item.thumbnail-small.selected {
+  --ring-color: var(--color-accent) !important;
+  transform: scale(1) !important;
+  border-color: var(--color-accent) !important;
+  border: 0px solid !important;
+  margin: 3px !important;
+}
+/* Interrogate buttons */
 #interrogate,
 #deepbooru {
   max-height: 84px;
+  flex-grow: 0.5;
 }
 /* Requires extra network to be set to thumbnails, probably */
 .extra-network-thumbs .card {
   height: 12em;
   width: 9em;
 }
-/*sd-webui-ar*/
+/* sd-webui-ar */
 button#arc_show_calculator_button {
   background-color: var(--background-fill-primary) !important;
 }
-/*================================================== */
+/*==================================================*/
