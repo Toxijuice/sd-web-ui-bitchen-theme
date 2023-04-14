@@ -6,8 +6,6 @@ var rearranged = false;
 
 class PageRearranger {
     static rearrangePage() {
-        console.log("rearrangePage()");
-
         //txt2img
         var txt2imgtoprow = document.getElementById("txt2img_toprow");
         var txt2imgtoprowparent = txt2imgtoprow.parentElement;
@@ -85,7 +83,6 @@ class PageRearranger {
 
 onUiTabChange(() => {
     if (!rearranged) {
-        console.log("Attempting to rearrange page.");
         PageRearranger.rearrangePage();
         rearranged = true;
     }
