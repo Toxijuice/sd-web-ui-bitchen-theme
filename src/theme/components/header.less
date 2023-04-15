@@ -34,14 +34,36 @@
   }
 
   #logo-main-div {
-    content: '';
-    display: block;
     width: 258px;
-    height: 52px;
+    height: 45px;
+    margin-right: 0px;
+    @media screen and (max-width: 800px) {
+      margin-right: -258px !important;
+    }
+    @media screen and (max-width: 500px) {
+      margin-right: -360px !important;
+    }
+  }
+  
+  svg#logo-main-svg {
+    position: fixed;
+    height: 66px;
     z-index: 1000;
-    // @media screen and (max-width: 640px) {
-    //   display: none;
-    // }
+
+    @media screen and (max-width: 500px) {
+      height: 29px;
+      margin-top: calc(100vh - 29px - 29px);
+      margin-left: -12px;
+      
+      background:#000000;
+      box-shadow:
+        0px 0px 0px 5px #000000,
+        144px 0px 0px 5px #000000,
+        288px 0px 0px 5px #000000,
+        432px 0px 0px 5px #000000;
+
+      opacity: 90%;
+    }
   }
 
   #logo-main-title {
@@ -50,6 +72,19 @@
 
   #logo-main-subtitle {
     fill: #cccccc;
+  }
+
+  #logo-main-title,
+  #logo-main-subtitle{
+    @media screen and (max-width: 800px) {
+      display: none;
+      visibility: hidden;
+    }
+
+    @media screen and (max-width: 500px) {
+      display: block;
+      visibility: initial;
+    }
   }
 
   #logo-main-icon-0{
@@ -77,12 +112,12 @@
     min-height: 16px;
   }
 
-  > div,
+  > div:not(#logo-main-div),
   > fieldset {
     min-width: 32px !important;
     @media screen and (max-width: 640px) {
       flex: 1;
-      max-width: 50%;
+      max-width: 49%;
     }
   }
 

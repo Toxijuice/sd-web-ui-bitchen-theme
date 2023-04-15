@@ -30,6 +30,7 @@ class PageRearranger {
         var txt2imggallerycontainer = document.getElementById("txt2img_gallery_container");
         var txt2imggallerybuttons = document.getElementById("image_buttons_txt2img");
         var txt2imggallerybuttonscontainer = txt2imggallerybuttons.parentElement;
+        var txt2imgdownloadpanel = document.getElementById("download_files_txt2img");
         var txt2imgpresetmanager = document.getElementById("txt2img_preset_manager_accordion");
         var txt2imgactions = document.getElementById("txt2img_actions_column");
         var txt2imgtools = document.getElementById("txt2img_tools");
@@ -56,6 +57,7 @@ class PageRearranger {
         safereparent(txt2imgresultspanel, txt2imggeneratebox);
         safereparent(txt2imgresultspanel, txt2imggallerycontainer);
         safereparent(txt2imgresultspanel, txt2imggallerybuttons);
+        safereparent(txt2imgresultspanel, txt2imgdownloadpanel);
         safereparent(txt2imgresultspanel, txt2imgpromptdetails);
 
         safereparent(txt2imgpromptcontainer, txt2imgnegprompt);
@@ -74,6 +76,7 @@ class PageRearranger {
         var img2imggallerycontainer = document.getElementById("img2img_gallery_container");
         var img2imggallerybuttons = document.getElementById("image_buttons_img2img");
         var img2imggallerybuttonscontainer = img2imggallerybuttons.parentElement;
+        var img2imgdownloadpanel = document.getElementById("download_files_img2img");
         var img2imgpresetmanager = document.getElementById("img2img_preset_manager_accordion");
         var img2imgactions = document.getElementById("img2img_actions_column");
         var img2imgtools = document.getElementById("img2img_tools");
@@ -103,6 +106,7 @@ class PageRearranger {
         safereparent(img2imgresultspanel, img2imggeneratebox);
         safereparent(img2imgresultspanel, img2imggallerycontainer);
         safereparent(img2imgresultspanel, img2imggallerybuttons);
+        safereparent(img2imgresultspanel, img2imgdownloadpanel);
         safereparent(img2imgresultspanel, img2imgpromptdetails);
 
         safereparent(img2imgpromptcontainer, img2imginterrogate);

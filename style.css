@@ -849,17 +849,54 @@ template {
   display: none;
 }
 #quicksettings #logo-main-div {
-  content: '';
-  display: block;
   width: 258px;
-  height: 52px;
+  height: 45px;
+  margin-right: 0px;
+}
+@media screen and (max-width: 800px) {
+  #quicksettings #logo-main-div {
+    margin-right: -258px !important;
+  }
+}
+@media screen and (max-width: 500px) {
+  #quicksettings #logo-main-div {
+    margin-right: -360px !important;
+  }
+}
+#quicksettings svg#logo-main-svg {
+  position: fixed;
+  height: 66px;
   z-index: 1000;
+}
+@media screen and (max-width: 500px) {
+  #quicksettings svg#logo-main-svg {
+    height: 29px;
+    margin-top: calc(100vh - 29px - 29px);
+    margin-left: -12px;
+    background: #000000;
+    box-shadow: 0px 0px 0px 5px #000000, 144px 0px 0px 5px #000000, 288px 0px 0px 5px #000000, 432px 0px 0px 5px #000000;
+    opacity: 90%;
+  }
 }
 #quicksettings #logo-main-title {
   fill: #ffffff;
 }
 #quicksettings #logo-main-subtitle {
   fill: #cccccc;
+}
+@media screen and (max-width: 800px) {
+  #quicksettings #logo-main-title,
+  #quicksettings #logo-main-subtitle {
+    display: none;
+    visibility: hidden;
+  }
+}
+@media screen and (max-width: 500px) {
+  #quicksettings #logo-main-title,
+  #quicksettings #logo-main-subtitle {
+    display: block;
+    visibility: initial;
+  }
 }
 #quicksettings #logo-main-icon-0 {
   fill: var(--colorLogoMain0);
@@ -880,15 +917,15 @@ template {
   min-width: 16px;
   min-height: 16px;
 }
-#quicksettings > div,
+#quicksettings > div:not(#logo-main-div),
 #quicksettings > fieldset {
   min-width: 32px !important;
 }
 @media screen and (max-width: 640px) {
-  #quicksettings > div,
+  #quicksettings > div:not(#logo-main-div),
   #quicksettings > fieldset {
     flex: 1;
-    max-width: 50%;
+    max-width: 49%;
   }
 }
 #quicksettings ul.options {
@@ -1243,7 +1280,7 @@ div.svelte-awbtu4 .gradio-file {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-size-adjust: 100%;
-  background-image: radial-gradient(circle 155vh at 40px 50px, #fff -5%, var(--colorPrimary) 5%, var(--colorPrimaryBorderHover) 20%, var(--colorPrimaryBgHover) 70%, var(--colorBgLayout) 100%);
+  background-image: radial-gradient(circle 155vh at 50px 50px, #fff -5%, var(--colorPrimary) 5%, var(--colorPrimaryBorderHover) 20%, var(--colorPrimaryBgHover) 70%, var(--colorBgLayout) 100%);
   background-repeat: no-repeat;
 }
 #txtimg_hr_finalres {
