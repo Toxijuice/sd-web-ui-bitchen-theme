@@ -1,16 +1,16 @@
 "use strict";
 
 var bitchenColorCycleEnabled = true;
-var bitchenColorChanger = {};
+var bitchenColorManager = {};
 
-class ToxiColorStuff {
+class BitchenColorManager {
     constructor() {
         this.roo = document.querySelector(':root');
         this.dark = document.querySelector('.dark');
         this.time = Math.random() * 240; // Random start time between 0 and 4 minutes
         this.cyclespeed = 0.0078125;
         this.hueBase = 0;
-        this.huedist = 0.0625;
+        this.huedist = -0.03;
         this.col         = {r: 0, g:0, b:0};
         this.colAccent   = {r: 0, g:0, b:0};
         this.colAccent25 = {r: 0, g:0, b:0};
@@ -19,6 +19,11 @@ class ToxiColorStuff {
         this.col50       = {r: 0, g:0, b:0};
         this.col20       = {r: 0, g:0, b:0};
         this.col10       = {r: 0, g:0, b:0};
+        this.collogo0    = {r: 0, g:0, b:0};
+        this.collogo1    = {r: 0, g:0, b:0};
+        this.collogo2    = {r: 0, g:0, b:0};
+        this.collogo3    = {r: 0, g:0, b:0};
+        this.collogo4    = {r: 0, g:0, b:0};
 
         this.hsvvars = { r: 0, g: 0, b: 0, i: 0, f: 0, p: 0, q: 0, t:0} // Frequently reused vars
     }
@@ -97,6 +102,11 @@ class ToxiColorStuff {
         this.SetColHSVtoRGB(this.col, hueMain, 0.90, 0.75);
         this.SetColHSVtoRGB(this.colAccent, hueAccent, 0.90, 0.75);
         this.SetColHSVtoRGB(this.colTextbox, hueMain, 1.00, 0.075);
+        this.SetColHSVtoRGB(this.collogo0, hueMain,                         0.80, 0.90);
+        this.SetColHSVtoRGB(this.collogo1, hueMain + (this.huedist * 0.40), 0.85, 0.70);
+        this.SetColHSVtoRGB(this.collogo2, hueMain + (this.huedist * 0.60), 0.90, 0.60);
+        this.SetColHSVtoRGB(this.collogo3, hueMain + (this.huedist * 0.80), 0.95, 0.50);
+        this.SetColHSVtoRGB(this.collogo4, hueAccent,                       1.00, 0.40);
 
         // this.col75.r = this.col.r * 0.75;
         // this.col75.g = this.col.g * 0.75;
@@ -218,6 +228,51 @@ class ToxiColorStuff {
             ')'
         );
 
+        this.roo.style.setProperty(
+            '--colorLogoMain0',
+            'rgb(' +
+                this.collogo0.r + ',' +
+                this.collogo0.g + ',' +
+                this.collogo0.b +
+            ')'
+        );
+
+        this.roo.style.setProperty(
+            '--colorLogoMain1',
+            'rgb(' +
+                this.collogo1.r + ',' +
+                this.collogo1.g + ',' +
+                this.collogo1.b +
+            ')'
+        );
+
+        this.roo.style.setProperty(
+            '--colorLogoMain2',
+            'rgb(' +
+                this.collogo2.r + ',' +
+                this.collogo2.g + ',' +
+                this.collogo2.b +
+            ')'
+        );
+
+        this.roo.style.setProperty(
+            '--colorLogoMain3',
+            'rgb(' +
+                this.collogo3.r + ',' +
+                this.collogo3.g + ',' +
+                this.collogo3.b +
+            ')'
+        );
+
+        this.roo.style.setProperty(
+            '--colorLogoMain4',
+            'rgb(' +
+                this.collogo4.r + ',' +
+                this.collogo4.g + ',' +
+                this.collogo4.b +
+            ')'
+        );
+
     }
 
     Update(dt) {
@@ -231,7 +286,7 @@ class ToxiColorStuff {
 }
 
 document.addEventListener('DOMContentLoaded', () => {
-    bitchenColorChanger = new ToxiColorStuff();
+    bitchenColorManager = new BitchenColorManager();
     const animfps = 12;
     const throttlems = (1 / animfps) / 0.001; // fps to ms per frame
 
@@ -246,7 +301,7 @@ document.addEventListener('DOMContentLoaded', () => {
             lasttime = timestamp;
 
             if (elapsedms >= throttlems) {
-                bitchenColorChanger.Update(elapsedms);
+                bitchenColorManager.Update(elapsedms);
                 elapsedms = 0;
             }
         }

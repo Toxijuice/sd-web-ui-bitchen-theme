@@ -343,6 +343,12 @@ template {
   --colorFillSecondary: rgba(255, 255, 255, 0.12);
   --colorFillTertiary: rgba(255, 255, 255, 0.08);
   --colorFillQuaternary: rgba(255, 255, 255, 0.04);
+  /* Logo */
+  --colorLogoMain0: #e62e57;
+  --colorLogoMain1: #b21b55;
+  --colorLogoMain2: #990f5c;
+  --colorLogoMain3: #7f065d;
+  --colorLogoMain4: #66005b;
   /* Typography */
   --fontSizeBase: 14;
   --fontSizeSM: calc(1px * var(--fontSizeBase) - 2px);
@@ -377,8 +383,8 @@ template {
   --borderRadius: calc(3px * var(--borderRadiusBase));
   --borderRadiusLG: calc(4px * var(--borderRadiusBase));
   /* Other */
-  --logo: url('https://raw.githubusercontent.com/Toxijuice/sd-web-ui-bitchen-theme/main/assets/bitchenlogo.svg');
-  --favicon: url('https://raw.githubusercontent.com/Toxijuice/sd-web-ui-bitchen-theme/main/assets/bitchenfavicon.svg');
+  --logo: url("./assets/bitchenlogo.svg");
+  --favicon: url("./assets/bitchenfaviconcol.svg");
   --galleryBackground: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAIAAAD8GO2jAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAIKADAAQAAAABAAAAIAAAAACPTkDJAAAAZUlEQVRIDe2VMQoAMAgDa9/g/1/oIzrpZBCh2dLFkkoDF0Fz99OdiOjks+2/7S8fRRmMMIVoRGSoYzvvqF8ZIMKlC1GhQBc6IkPzq32QmdAzkEGihpWOSPsAss8HegYySNSw0hE9WQ4StafZFqkAAAAASUVORK5CYII=') 0% 0% / 20px;
 }
 :root {
@@ -840,21 +846,35 @@ template {
 }
 #quicksettings::before {
   content: '';
-  display: block;
-  background: var(--logo) no-repeat;
-  width: 129px;
-  height: 26px;
-  z-index: 1000;
-  margin-right: 36px;
-  margin-left: 16px;
-  margin-top: 12px;
-  filter: drop-shadow(0px 0px 3px var(--colorPrimary)) drop-shadow(0px 0px 15px var(--colorAccent));
+  display: none;
 }
-@media screen and (max-width: 640px) {
-  #quicksettings::before {
-    display: none;
-    filter: none;
-  }
+#quicksettings #logo-main-div {
+  content: '';
+  display: block;
+  width: 258px;
+  height: 52px;
+  z-index: 1000;
+}
+#quicksettings #logo-main-title {
+  fill: #ffffff;
+}
+#quicksettings #logo-main-subtitle {
+  fill: #cccccc;
+}
+#quicksettings #logo-main-icon-0 {
+  fill: var(--colorLogoMain0);
+}
+#quicksettings #logo-main-icon-1 {
+  fill: var(--colorLogoMain1);
+}
+#quicksettings #logo-main-icon-2 {
+  fill: var(--colorLogoMain2);
+}
+#quicksettings #logo-main-icon-3 {
+  fill: var(--colorLogoMain3);
+}
+#quicksettings #logo-main-icon-4 {
+  fill: var(--colorLogoMain4);
 }
 #quicksettings .dropdown-arrow {
   min-width: 16px;
