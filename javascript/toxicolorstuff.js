@@ -98,6 +98,21 @@ class BitchenColorManager {
         };
     }
 
+    SetDefaultTheme() {
+        this.SetHue(0.95);
+        this.SetHueDist(-0.15);
+    }
+
+    SetHue(hue) {
+        this.hueBase = hue;
+        this.SetColorScheme(this.hueBase, this.hueBase + this.huedist);
+    }
+
+    SetHueDist(dist) {
+        this.huedist = dist;
+        this.SetColorScheme(this.hueBase, this.hueBase + this.huedist);
+    }
+
     SetColorScheme(hueMain, hueAccent) {
         this.SetColHSVtoRGB(this.col, hueMain, 0.90, 0.75);
         this.SetColHSVtoRGB(this.colAccent, hueAccent, 0.90, 0.75);
@@ -287,6 +302,7 @@ class BitchenColorManager {
 
 document.addEventListener('DOMContentLoaded', () => {
     bitchenColorManager = new BitchenColorManager();
+    bitchenColorManager.SetDefaultTheme();
     const animfps = 12;
     const throttlems = (1 / animfps) / 0.001; // fps to ms per frame
 
