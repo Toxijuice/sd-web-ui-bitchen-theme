@@ -1,31 +1,33 @@
-"use strict";
-
-var bitchenColorCycleEnabled = true;
-var bitchenColorManager = {};
+var bitchenColorCycleEnabled = false;
+var bitchenColorManager = null;
 
 class BitchenColorManager {
     constructor() {
         this.roo = document.querySelector(':root');
         this.dark = document.querySelector('.dark');
         this.time = Math.random() * 240; // Random start time between 0 and 4 minutes
-        this.cyclespeed = 0.0078125;
+        this.cyclespeeddefault = 0.0078125;
+        this.cyclespeed = this.cyclespeeddefault;
+        this.animfps = 12;
+        this.throttlems = (1 / this.animfps) / 0.001; // fps to ms per frame
+        this.hueBaseWaiting = 0;
         this.hueBase = 0;
-        this.huedist = -0.03;
-        this.col         = {r: 0, g:0, b:0};
-        this.colAccent   = {r: 0, g:0, b:0};
-        this.colAccent25 = {r: 0, g:0, b:0};
-        this.colTextbox  = {r: 0, g:0, b:0, a:0.75};
-        this.col75       = {r: 0, g:0, b:0};
-        this.col50       = {r: 0, g:0, b:0};
-        this.col20       = {r: 0, g:0, b:0};
-        this.col10       = {r: 0, g:0, b:0};
-        this.collogo0    = {r: 0, g:0, b:0};
-        this.collogo1    = {r: 0, g:0, b:0};
-        this.collogo2    = {r: 0, g:0, b:0};
-        this.collogo3    = {r: 0, g:0, b:0};
-        this.collogo4    = {r: 0, g:0, b:0};
+        this.hueDist = -0.03;
+        this.col = { r: 0, g: 0, b: 0 };
+        this.colAccent = { r: 0, g: 0, b: 0 };
+        this.colAccent25 = { r: 0, g: 0, b: 0 };
+        this.colTextbox = { r: 0, g: 0, b: 0, a: 0.75 };
+        this.col75 = { r: 0, g: 0, b: 0 };
+        this.col50 = { r: 0, g: 0, b: 0 };
+        this.col20 = { r: 0, g: 0, b: 0 };
+        this.col10 = { r: 0, g: 0, b: 0 };
+        this.collogo0 = { r: 0, g: 0, b: 0 };
+        this.collogo1 = { r: 0, g: 0, b: 0 };
+        this.collogo2 = { r: 0, g: 0, b: 0 };
+        this.collogo3 = { r: 0, g: 0, b: 0 };
+        this.collogo4 = { r: 0, g: 0, b: 0 };
 
-        this.hsvvars = { r: 0, g: 0, b: 0, i: 0, f: 0, p: 0, q: 0, t:0} // Frequently reused vars
+        this.hsvvars = { r: 0, g: 0, b: 0, i: 0, f: 0, p: 0, q: 0, t: 0 } // Frequently reused vars
     }
 
     SetColHSVtoRGB(colobj, h, s, v) {
@@ -105,23 +107,45 @@ class BitchenColorManager {
 
     SetHue(hue) {
         this.hueBase = hue;
-        this.SetColorScheme(this.hueBase, this.hueBase + this.huedist);
+        this.hueBaseWaiting = hue;
+        this.SetColorScheme(this.hueBase, this.hueBase + this.hueDist);
     }
 
     SetHueDist(dist) {
-        this.huedist = dist;
-        this.SetColorScheme(this.hueBase, this.hueBase + this.huedist);
+        this.hueDist = dist;
+        this.SetColorScheme(this.hueBase, this.hueBase + this.hueDist);
+    }
+
+    SetCycleSpeed(speed) {
+        this.cyclespeed = this.cyclespeeddefault * speed;
+    }
+
+    SetFramerate(framerate) {
+        this.animfps = framerate;
+        this.throttlems = (1 / this.animfps) / 0.001; // fps to ms per frame
+    }
+
+    CorrectHue(hue) {
+        if (hue < 0.00) hue = hue % 1.00;
+        if (hue < 0.00) hue = hue + 1.00;
+
+        return hue + 1.00;
     }
 
     SetColorScheme(hueMain, hueAccent) {
+        hueMain = this.CorrectHue(hueMain);
+        hueAccent = this.CorrectHue(hueAccent);
+
+        console.log(hueMain, hueAccent);
+
         this.SetColHSVtoRGB(this.col, hueMain, 0.90, 0.75);
         this.SetColHSVtoRGB(this.colAccent, hueAccent, 0.90, 0.75);
         this.SetColHSVtoRGB(this.colTextbox, hueMain, 1.00, 0.075);
-        this.SetColHSVtoRGB(this.collogo0, hueMain,                         0.80, 0.90);
-        this.SetColHSVtoRGB(this.collogo1, hueMain + (this.huedist * 0.40), 0.85, 0.70);
-        this.SetColHSVtoRGB(this.collogo2, hueMain + (this.huedist * 0.60), 0.90, 0.60);
-        this.SetColHSVtoRGB(this.collogo3, hueMain + (this.huedist * 0.80), 0.95, 0.50);
-        this.SetColHSVtoRGB(this.collogo4, hueAccent,                       1.00, 0.40);
+        this.SetColHSVtoRGB(this.collogo0, hueMain, 0.80, 0.90);
+        this.SetColHSVtoRGB(this.collogo1, hueMain + (this.hueDist * 0.40), 0.85, 0.70);
+        this.SetColHSVtoRGB(this.collogo2, hueMain + (this.hueDist * 0.60), 0.90, 0.60);
+        this.SetColHSVtoRGB(this.collogo3, hueMain + (this.hueDist * 0.80), 0.95, 0.50);
+        this.SetColHSVtoRGB(this.collogo4, hueAccent, 1.00, 0.40);
 
         // this.col75.r = this.col.r * 0.75;
         // this.col75.g = this.col.g * 0.75;
@@ -146,145 +170,145 @@ class BitchenColorManager {
         this.roo.style.setProperty(
             '--colorPrimary',
             'rgb(' +
-                this.col.r + ',' +
-                this.col.g + ',' +
-                this.col.b +
+            this.col.r + ',' +
+            this.col.g + ',' +
+            this.col.b +
             ')'
         );
 
         this.roo.style.setProperty(
             '--colorAccent',
             'rgb(' +
-                this.colAccent.r + ',' +
-                this.colAccent.g + ',' +
-                this.colAccent.b +
+            this.colAccent.r + ',' +
+            this.colAccent.g + ',' +
+            this.colAccent.b +
             ')'
         );
 
         this.roo.style.setProperty(
             '--colorFillTertiary',
             'rgba(' +
-                this.colTextbox.r + ',' +
-                this.colTextbox.g + ',' +
-                this.colTextbox.b + ',' +
-                this.colTextbox.a +
+            this.colTextbox.r + ',' +
+            this.colTextbox.g + ',' +
+            this.colTextbox.b + ',' +
+            this.colTextbox.a +
             ')'
         );
 
         this.roo.style.setProperty(
             '--ring-color',
             'rgb(' +
-                this.colAccent.r + ',' +
-                this.colAccent.g + ',' +
-                this.colAccent.b +
+            this.colAccent.r + ',' +
+            this.colAccent.g + ',' +
+            this.colAccent.b +
             ')'
         );
 
         this.roo.style.setProperty(
             '--colorBorder',
             'rgb(' +
-                this.colAccent.r + ',' +
-                this.colAccent.g + ',' +
-                this.colAccent.b +
+            this.colAccent.r + ',' +
+            this.colAccent.g + ',' +
+            this.colAccent.b +
             ')'
         );
 
         this.roo.style.setProperty(
             '--colorPrimaryBorderHover',
             'rgb(' +
-                this.col50.r + ',' +
-                this.col50.g + ',' +
-                this.col50.b +
+            this.col50.r + ',' +
+            this.col50.g + ',' +
+            this.col50.b +
             ')'
         );
 
         this.roo.style.setProperty(
             '--colorPrimaryText',
             'rgb(' +
-                this.col.r + ',' +
-                this.col.g + ',' +
-                this.col.b +
+            this.col.r + ',' +
+            this.col.g + ',' +
+            this.col.b +
             ')'
         );
 
         this.roo.style.setProperty(
             '--colorPrimaryBgHover',
             'rgb(' +
-                this.colAccent25.r + ',' +
-                this.colAccent25.g + ',' +
-                this.colAccent25.b +
+            this.colAccent25.r + ',' +
+            this.colAccent25.g + ',' +
+            this.colAccent25.b +
             ')'
         );
 
         this.roo.style.setProperty(
             '--colorBgContainer',
             'rgb(' +
-                this.col20.r + ',' +
-                this.col20.g + ',' +
-                this.col20.b +
+            this.col20.r + ',' +
+            this.col20.g + ',' +
+            this.col20.b +
             ')'
         );
 
         this.roo.style.setProperty(
             '--colorPrimaryBg',
             'rgb(' +
-                this.col10.r + ',' +
-                this.col10.g + ',' +
-                this.col10.b +
+            this.col10.r + ',' +
+            this.col10.g + ',' +
+            this.col10.b +
             ')'
         );
 
         this.roo.style.setProperty(
             '--colorBgElevated',
             'rgb(' +
-                this.col10.r + ',' +
-                this.col10.g + ',' +
-                this.col10.b +
+            this.col10.r + ',' +
+            this.col10.g + ',' +
+            this.col10.b +
             ')'
         );
 
         this.roo.style.setProperty(
             '--colorLogoMain0',
             'rgb(' +
-                this.collogo0.r + ',' +
-                this.collogo0.g + ',' +
-                this.collogo0.b +
+            this.collogo0.r + ',' +
+            this.collogo0.g + ',' +
+            this.collogo0.b +
             ')'
         );
 
         this.roo.style.setProperty(
             '--colorLogoMain1',
             'rgb(' +
-                this.collogo1.r + ',' +
-                this.collogo1.g + ',' +
-                this.collogo1.b +
+            this.collogo1.r + ',' +
+            this.collogo1.g + ',' +
+            this.collogo1.b +
             ')'
         );
 
         this.roo.style.setProperty(
             '--colorLogoMain2',
             'rgb(' +
-                this.collogo2.r + ',' +
-                this.collogo2.g + ',' +
-                this.collogo2.b +
+            this.collogo2.r + ',' +
+            this.collogo2.g + ',' +
+            this.collogo2.b +
             ')'
         );
 
         this.roo.style.setProperty(
             '--colorLogoMain3',
             'rgb(' +
-                this.collogo3.r + ',' +
-                this.collogo3.g + ',' +
-                this.collogo3.b +
+            this.collogo3.r + ',' +
+            this.collogo3.g + ',' +
+            this.collogo3.b +
             ')'
         );
 
         this.roo.style.setProperty(
             '--colorLogoMain4',
             'rgb(' +
-                this.collogo4.r + ',' +
-                this.collogo4.g + ',' +
-                this.collogo4.b +
+            this.collogo4.r + ',' +
+            this.collogo4.g + ',' +
+            this.collogo4.b +
             ')'
         );
 
@@ -295,7 +319,7 @@ class BitchenColorManager {
         if (this.time > 7200) this.time -= 7200; // Reset time every 2 hours
 
         this.hueBase = this.time * this.cyclespeed;
-        this.SetColorScheme(this.hueBase, this.hueBase + this.huedist);
+        this.SetColorScheme(this.hueBase, this.hueBase + this.hueDist);
     }
 
 }
@@ -303,8 +327,6 @@ class BitchenColorManager {
 document.addEventListener('DOMContentLoaded', () => {
     bitchenColorManager = new BitchenColorManager();
     bitchenColorManager.SetDefaultTheme();
-    const animfps = 12;
-    const throttlems = (1 / animfps) / 0.001; // fps to ms per frame
 
     var dt = 0;
     var lasttime = 0;
@@ -316,7 +338,7 @@ document.addEventListener('DOMContentLoaded', () => {
             elapsedms += dt;
             lasttime = timestamp;
 
-            if (elapsedms >= throttlems) {
+            if (elapsedms >= bitchenColorManager.throttlems) {
                 bitchenColorManager.Update(elapsedms);
                 elapsedms = 0;
             }
