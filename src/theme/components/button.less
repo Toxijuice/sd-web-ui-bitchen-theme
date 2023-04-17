@@ -13,6 +13,16 @@
   }
 }
 
+.gradio-radio label,
+.gradio-checkboxgroup label{
+  transition: var(--baseTransition) !important;
+  
+  &:hover{
+    color: var(--colorPrimary)  !important;
+    transition: var(--hoverTransition) !important;
+  }
+}
+
 #txt2img_generate,
 #img2img_generate {
   background: var(--button-primary-background-fill) !important;
@@ -64,11 +74,34 @@
   height: 25px;
 }
 
-/* Settings buttons */
+
 #settings button.svelte-1g805jl {
+  transition: var(--baseTransition) !important;
   border-radius: 0px;
-  border-top-left-radius: var(--container-radius);
-  border-bottom-left-radius: var(--container-radius);
+  border: 0px solid;
+  border-left: 0px solid transparent;
+
+  &:hover {
+    color: #ffffff !important;
+    border-left: 3px solid var(--colorAccent);
+    transition: var(--hoverTransition) !important;
+  }
+}
+
+/* Settings buttons */
+#settings button.selected.svelte-1g805jl {
+  transition: var(--baseTransition) !important;
+  color: var(--colorPrimary) !important;
+  border: 0px solid;
+  border-left: 3px solid var(--colorPrimary);
+  border-top-right-radius: var(--container-radius); 
+  border-bottom-right-radius: var(--container-radius); 
+  background:transparent;
+  backdrop-filter: brightness(0.95);
+
+  &:hover {
+    color: var(--colorPrimary) !important;
+  }
 }
 
 /* Inpainting/Sketch Buttons */
