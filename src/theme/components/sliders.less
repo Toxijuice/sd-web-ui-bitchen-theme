@@ -1,6 +1,7 @@
 input[type='range'] {
   appearance: none !important;
   background: transparent !important;
+  transition: var(--baseTransition) !important;
 
   &:focus {
     outline: none !important;
@@ -12,12 +13,13 @@ input[type='range'] {
     border-radius: 3px !important;
     background: var(--colorPrimaryBg) !important;
     opacity: 0.6 !important;
+    transition: var(--baseTransition) !important;
   }
 
   &:hover::-webkit-slider-runnable-track {
+    transition: var(--hoverTransition) !important;
     background: var(--colorPrimary) !important;
     opacity: 1 !important;
-    transition: all 0.05s ease-in-out;
   }
 
   &::-moz-range-track {
@@ -25,23 +27,26 @@ input[type='range'] {
     height: 6px !important;
     border-radius: 3px !important;
     background: var(--colorPrimaryBg) !important;
+    transition: var(--baseTransition) !important;
   }
 
   &:hover::-moz-range-track {
     background: var(--colorPrimaryBg) !important;
-    transition: all 0.05s ease-in-out;
+    transition: var(--hoverTransition) !important;
   }
 
   &::-moz-range-progress {
     cursor: pointer !important;
     height: 6px !important;
     border-radius: 3px !important;
-    background: linear-gradient(90deg, var(--colorAccent) 100%, var(--colorPrimary) 200%) !important;
+    background: linear-gradient(90deg, var(--colorAccent) 0%, var(--colorAccent) 25%, var(--colorPrimary) 50%) !important;
+    background-size: 250% !important;
+    transition: var(--baseTransition) !important;
   }
 
   &:hover::-moz-range-progress {
-    background: linear-gradient(90deg, var(--colorAccent) 0%, var(--colorPrimary) 100%) !important;
-    transition: all 1.0s ease-in-out;
+    background-size: 100% !important;
+    transition: var(--hoverTransition) !important;
   }
 
   &::-ms-fill-upper,
@@ -50,12 +55,13 @@ input[type='range'] {
     height: 6px !important;
     border-radius: 3px !important;
     background: var(--colorPrimary) !important;
+    transition: var(--baseTransition) !important;
   }
 
   &:hover::-ms-fill-upper,
   &:hover::-ms-fill-lower {
     background: var(--colorBgElevated) !important;
-    transition: all 0.05s ease-in-out;
+    transition: var(--hoverTransition) !important;
   }
 
   &::-webkit-slider-thumb {
@@ -67,6 +73,7 @@ input[type='range'] {
     cursor: pointer !important;
     appearance: none !important;
     margin-top: -5px !important;
+    transition: var(--baseTransition) !important;
   }
 
   &:active::-webkit-slider-thumb {
@@ -84,6 +91,7 @@ input[type='range'] {
     cursor: pointer !important;
     margin-top: -5px !important;
     z-index: 999;
+    transition: var(--baseTransition) !important;
   }
 
   &:active::-moz-range-thumb {
@@ -95,7 +103,7 @@ input[type='range'] {
   &:hover::-moz-range-thumb {
     border: 2px solid var(--background-fill-primary);
     background: var(--colorPrimary) !important;
-    transition: all 0.05s ease-in-out;
+    transition: var(--hoverTransition) !important;
   }
 
   &::-ms-thumb {
@@ -106,6 +114,7 @@ input[type='range'] {
     background: var(--colorBgElevated) !important;
     cursor: pointer !important;
     margin-top: -5px !important;
+    transition: var(--baseTransition) !important;
   }
 
   &:active::-ms-thumb {

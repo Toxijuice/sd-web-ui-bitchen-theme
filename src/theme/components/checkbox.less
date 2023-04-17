@@ -1,4 +1,16 @@
-.gradio-checkbox:hover label {
-	color: var(--colorPrimary) !important;
-    transition: all 0.05s ease-in-out;
+.gradio-checkbox{
+    transition: var(--baseTransition) !important;
+
+    &:hover{
+        transition: var(--hoverTransition) !important;
+    }
+
+    & label {
+        transition: var(--baseTransition) !important;
+    }
+
+    &:hover label {
+        color: var(--colorPrimary) !important;
+        transition: var(--hoverTransition) !important;
+    }
 }

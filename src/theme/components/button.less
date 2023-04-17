@@ -4,10 +4,12 @@
   min-height: 36px;
   overflow: hidden;
   text-overflow: ellipsis;
-  outline: 0px solid var(--colorPrimary);
+  outline: 2px solid transparent;
+  transition: var(--baseTransition) !important;
 
   &:hover {
     outline: 2px solid var(--colorPrimary);
+    transition: var(--hoverTransition) !important;
   }
 }
 
@@ -73,46 +75,55 @@
 button[aria-label] {
   border: 1px solid var(--colorAccent) !important;
   stroke-width: 1.5 !important;
+  transition: var(--baseTransition) !important;
+
 
   & svg {
     stroke: #fff !important;
     accent-color: #fff !important;
     fill: #ffffff00 !important;
+    transition: var(--baseTransition) !important;
   }
 
   & path {
     stroke: #fff !important;
     accent-color: #fff !important;
     fill: #ffffff00 !important;
+    transition: var(--baseTransition) !important;
   }
 
   & circle {
     stroke: #fff !important;
     accent-color: #fff !important;
     fill: #ffffff00 !important;
+    transition: var(--baseTransition) !important;
   }
 
   &:hover {
     color: var(--colorPrimary) !important;
     border: 1px solid var(--colorPrimary) !important;
     stroke-width: 2 !important;
+    transition: var(--hoverTransition) !important;
 
     & svg {
       stroke: var(--colorPrimary) !important;
       accent-color: var(--colorPrimary) !important;
       fill: #ffffff00 !important;
+      transition: var(--hoverTransition) !important;
     }
 
     & path {
       stroke: var(--colorPrimary) !important;
       accent-color: var(--colorPrimary) !important;
       fill: #ffffff00 !important;
+      transition: var(--hoverTransition) !important;
     }
 
     & circle {
       stroke: var(--colorPrimary) !important;
       accent-color: var(--colorPrimary) !important;
       fill: #ffffff00 !important;
+      transition: var(--hoverTransition) !important;
     }
   }
 }
@@ -124,7 +135,8 @@ button[aria-label] {
   gap: 0.5em;
   flex-flow: row !important;
 
-  #interrogate, #deepbooru {
+  #interrogate,
+  #deepbooru {
     /* max-height: 84px; */
     /* flex-grow: 0.5; */
     margin-bottom: var(--layout-gap);

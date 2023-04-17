@@ -2,9 +2,10 @@ input[type="text"],
 input[type="number"],
 textarea {
     border: solid 1px var(--colorPrimaryBorderHover) !important;
+    transition: var(--baseTransition);
 
     &:hover {
         color: var(--colorPrimary) !important;
-        transition: all 0.05s ease-in-out;
+        transition: var(--hoverTransition) !important;
     }
 }

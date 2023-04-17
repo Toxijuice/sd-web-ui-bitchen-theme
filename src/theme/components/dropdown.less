@@ -1,16 +1,38 @@
-.gradio-dropdown:hover .wrap span {
-    color: var(--colorPrimary) !important;
-    transition: all 0.05s ease-in-out;
+.gradio-dropdown {
+    transition: var(--baseTransition) !important;
+
+    .wrap {
+        span {
+            transition: var(--baseTransition) !important;
+        }
+
+        svg {
+            transition: var(--baseTransition) !important;
+        }
+    }
+
+    &:hover {
+        .wrap {
+            span {
+                color: var(--colorPrimary) !important;
+                transition: var(--hoverTransition) !important;
+            }
+
+            svg {
+                fill: var(--colorPrimary) !important;
+                transition: var(--hoverTransition) !important;
+            }
+        }
+    }
 }
 
-.gradio-dropdown:hover .wrap svg {
-    fill: var(--colorPrimary) !important;
-    transition: all 0.05s ease-in-out;
-}
+.label-wrap {
+    transition: var(--baseTransition) !important;
 
-.label-wrap:hover {
-    color: var(--colorPrimary);
-    transition: all 0.05s ease-in-out;
+    &:hover {
+        color: var(--colorPrimary);
+        transition: var(--hoverTransition) !important;
+    }
 }
 
 /* Dropdown Border */
@@ -21,5 +43,14 @@
     &:focus,
     &:focus-within {
         box-shadow: var(--input-shadow-focus) !important;
+    }
+
+    li {
+        transition: var(--baseTransition) !important;
+    }
+
+    li:hover {
+        color: var(--colorPrimary);
+        transition: var(--hoverTransition) !important;
     }
 }
