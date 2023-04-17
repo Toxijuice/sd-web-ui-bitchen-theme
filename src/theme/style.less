@@ -19,6 +19,7 @@
 @import 'components/gallery';
 @import 'components/script-container';
 @import 'components/extra-network';
+@import 'components/extra-progressbar';
 
 /* Plugin */
 @import 'plugin/aspect_ratio';
@@ -31,201 +32,14 @@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-size-adjust: 100%;
-  background-image: radial-gradient(
-    circle 155vh at 50px 50px,
-    #fff -5%,
-    var(--colorPrimary) 5%,
-    var(--colorPrimaryBorderHover) 20%,
-    var(--colorPrimaryBgHover) 70%,
-    var(--colorBgLayout) 100%
-  );
+  background-image: radial-gradient(circle 155vh at 50px 50px,
+      #fff -5%,
+      var(--colorPrimary) 5%,
+      var(--colorPrimaryBorderHover) 20%,
+      var(--colorPrimaryBgHover) 70%,
+      var(--colorBgLayout) 100%);
 
   background-repeat: no-repeat;
-}
-
-#txtimg_hr_finalres {
-  color: var(--colorPrimary) !important;
-}
-
-/*==Toxi-added======================================*/
-
-/* Preview Various Fixes */
-.livePreview {
-  background: var(--galleryBackground) !important;
-  border: 0px solid var(--colorBorder) !important;
-  border-radius: var(--block-radius) !important;
-  scale: 0.985;
-  margin-top: 0px;
-  margin-left: 1px;
-}
-
-div.svelte-1oo81b7>*:not(.absolute) {
-  border-radius: 0!important
-}
-
-/* Progress bar bg */
-.progressDiv {
-  background: var(--colorPrimaryBorderHover) !important;
-  position: relative;
-  height: 22px;
-  border-radius: var(--block-radius) !important;
-  border-bottom-left-radius: 0px !important;
-  border-bottom-right-radius: 0px !important;
-  border-top: solid 2px var(--colorAccent) !important;
-  border-right: solid 2px var(--colorAccent) !important;
-  border-left: solid 2px var(--colorAccent) !important;
-  margin-bottom: -27px;
-  z-index: 301;
-}
-
-.livePreview img{
-  margin-top: 1px;
-}
-
-/* Inpainting/Sketch Buttons */
-button[aria-label] {
-  border: 1px solid var(--colorAccent) !important;
-  stroke-width: 1.5 !important;
-
-  & svg{
-    stroke: #fff !important;
-    accent-color: #fff !important;
-    fill: #ffffff00 !important;
-  }
-
-  & path{
-    stroke: #fff !important;
-    accent-color: #fff !important;
-    fill: #ffffff00 !important;
-  }
-
-  & circle{
-    stroke: #fff !important;
-    accent-color: #fff !important;
-    fill: #ffffff00 !important;
-  }
-
-  &:hover{
-    color: var(--colorPrimary) !important;
-    border: 1px solid var(--colorPrimary) !important;
-    stroke-width: 2 !important;
-
-    & svg{
-      stroke: var(--colorPrimary) !important;
-      accent-color: var(--colorPrimary) !important;
-      fill: #ffffff00 !important;
-    }
-  
-    & path{
-      stroke: var(--colorPrimary) !important;
-      accent-color: var(--colorPrimary) !important;
-      fill: #ffffff00 !important;
-    }
-  
-    & circle{
-      stroke: var(--colorPrimary) !important;
-      accent-color: var(--colorPrimary) !important;
-      fill: #ffffff00 !important;
-    }
-  }
-}
-
-/* Dropdown Border */
-.gradio-dropdown div.wrap {
-  border: solid 1px var(--colorPrimaryBorderHover) !important;
-}
-
-/* Textarea Border */
-textarea {
-  border: solid 1px var(--colorPrimaryBorderHover) !important;
-}
-
-/* Misc top borders */
-div.svelte-1oo81b7 > * + *:not(.absolute),
-#txt2img_script_container,
-#img2img_script_container, 
-#txt2img_results, 
-#img2img_results{
-  border-top-right-radius: 0px !important;
-  border-top-left-radius: 0px !important;
-  border-bottom-left-radius: var(--block-radius) !important;
-  border-bottom-right-radius: var(--block-radius) !important;
-  border-top: solid 4px var(--colorAccent) !important;
-}
-
-/* Settings buttons */
-#settings button.svelte-1g805jl {
-	border-radius: 0px;
-	border-top-left-radius: var(--container-radius);
-	border-bottom-left-radius: var(--container-radius);
-}
-
-/* More negative prompt space */
-#txt2img_prompt_container {
-  flex-flow: row wrap;
-  & > div{
-    width: 1px;
-    flex-grow: 1;
-
-    @media screen and (max-width: 725px) {
-      width: 100% !important;
-    }
-  }
-}
-
-/* More negative prompt space */
-#img2img_prompt_container {
-  flex-flow: row wrap;
-
-  & > button{
-    width: 1px;
-    flex-grow: 0.1;
-    min-width: fit-content;
-
-    @media screen and (max-width: 1000px) {
-      width: 100% !important;
-    }
-  }
-
-  & > div{
-    width: 1px !important;
-    flex-grow: 1;
-
-    @media screen and (max-width: 1000px) {
-      width: 100% !important;
-    }
-  }
-}
-
-/* Smaller styles buttons */
-#txt2img_styles button, 
-#img2img_styles button {
-  min-height: 25px;
-  height: 25px;
-}
-
-/* Fix styles label margin */
-#txt2img_styles,
-#img2img_styles{
-    margin-top: -18px;
-}
-
-/* Fix styles refresh size */
-button#refresh_txt2img_styles,
-button#refresh_img2img_styles{
-    margin-bottom: 5px !important;
-    min-height: 20px !important;
-    height: 20px !important;
-    min-width: 20px !important;
-    width: 20px !important;
-    padding: 0px !important;
-    margin-right: 4px !important;
-}
-
-/* No top border for log */
-#html_log_txt2img,
-#html_log_img2img{
-  border-top: none !important;
 }
 
 /* Text highlight */
@@ -233,50 +47,26 @@ button#refresh_img2img_styles{
   background: var(--colorPrimary);
 }
 
-/* Progress bar fg */
-.progressDiv .progress {
-  border-bottom-left-radius: 0px !important;
-  border-bottom-right-radius: 0px !important;
-  background: linear-gradient(90deg, var(--colorAccent) 0%, var(--colorPrimary) 100%) !important;
-  color: var(--colorText);
+/* Hires. fix text color highlight */
+#txtimg_hr_finalres {
+  color: var(--colorPrimary) !important;
 }
 
-/* Image Preview Corner Fix */
-.preview {
-	border-radius: inherit !important;
-  padding: 15px;
+/* Misc decorative top borders */
+div.svelte-1oo81b7>*+*:not(.absolute):not(#html_log_txt2img):not(#html_log_img2img),
+#txt2img_script_container,
+#img2img_script_container,
+#txt2img_results,
+#img2img_results {
+  border-top-right-radius: 0px !important;
+  border-top-left-radius: 0px !important;
+  border-bottom-left-radius: var(--block-radius) !important;
+  border-bottom-right-radius: var(--block-radius) !important;
+  border-top: solid 4px var(--colorAccent) !important;
 }
 
-.thumbnail-item.thumbnail-small.selected {
-  --ring-color: var(--color-accent) !important;
-  transform: scale(1) !important;
-  border-color: var(--color-accent) !important;
-  border: 0px solid !important;
-  margin: 3px !important;
+/* Fix styles label margin */
+#txt2img_styles,
+#img2img_styles {
+  margin-top: -18px;
 }
-
-// /* Image Thumbnail Spacing Fix */
-// .thumbnails.scroll-hide {
-//   margin-left: 8px;
-//   margin-right: 8px;
-// }
-
-/* Interrogate buttons */
-#interrogate,
-#deepbooru {
-  max-height: 84px;
-  flex-grow: 0.5;
-}
-
-/* Requires extra network to be set to thumbnails, probably */
-.extra-network-thumbs .card {
-  height: 12em;
-  width: 9em;
-}
-
-/* sd-webui-ar */
-button#arc_show_calculator_button {
-  background-color: var(--background-fill-primary) !important;
-}
-
-/*==================================================*/

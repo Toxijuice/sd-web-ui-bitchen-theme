@@ -1092,14 +1092,17 @@ input[type='range']:active::-ms-thumb {
 #txt2img_generate,
 #img2img_generate {
   background: var(--button-primary-background-fill) !important;
+  transition: all 0.2s linear;
 }
 #txt2img_generate:hover,
 #img2img_generate:hover {
   background: var(--button-secondary-background-fill) !important;
+  transition: all 0s linear;
 }
 #txt2img_generate:active,
 #img2img_generate:active {
   background: var(--colorErrorActive) !important;
+  transition: all 0s linear;
 }
 #txt2img_interrupt,
 #txt2img_skip,
@@ -1375,6 +1378,12 @@ div.svelte-1oo81b7 > * + *:not(.absolute),
   border-bottom-left-radius: var(--block-radius) !important;
   border-bottom-right-radius: var(--block-radius) !important;
   border-top: solid 4px var(--colorAccent) !important;
+}
+/* Settings buttons */
+#settings button.svelte-1g805jl {
+  border-radius: 0px;
+  border-top-left-radius: var(--container-radius);
+  border-bottom-left-radius: var(--container-radius);
 }
 /* More negative prompt space */
 #txt2img_prompt_container {

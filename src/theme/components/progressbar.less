@@ -1,0 +1,22 @@
+/* Progress bar bg */
+.progressDiv {
+    background: var(--colorPrimaryBorderHover) !important;
+    position: relative;
+    height: 22px;
+    border-radius: var(--block-radius) !important;
+    border-bottom-left-radius: 0px !important;
+    border-bottom-right-radius: 0px !important;
+    border-top: solid 2px var(--colorAccent) !important;
+    border-right: solid 2px var(--colorAccent) !important;
+    border-left: solid 2px var(--colorAccent) !important;
+    margin-bottom: -27px;
+    z-index: 301;
+}
+
+/* Progress bar fg */
+.progressDiv .progress {
+    border-bottom-left-radius: 0px !important;
+    border-bottom-right-radius: 0px !important;
+    background: linear-gradient(90deg, var(--colorAccent) 0%, var(--colorPrimary) 100%) !important;
+    color: var(--colorText);
+}

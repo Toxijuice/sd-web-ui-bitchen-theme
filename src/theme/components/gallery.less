@@ -19,3 +19,35 @@ div.svelte-awbtu4 {
     border-radius: var(--block-radius) !important;
   }
 }
+
+/* Preview Various Fixes */
+.livePreview {
+  background: var(--galleryBackground) !important;
+  border: 0px solid var(--colorBorder) !important;
+  border-radius: var(--block-radius) !important;
+  scale: 0.985;
+  margin-top: 0px;
+  margin-left: 1px;
+
+  & img {
+    margin-top: 1px;
+  }
+}
+
+div.svelte-1oo81b7>*:not(.absolute) {
+  border-radius: 0 !important
+}
+
+/* Image Preview Corner Fix */
+.preview {
+  border-radius: inherit !important;
+  padding: 15px;
+}
+
+.thumbnail-item.thumbnail-small.selected {
+  --ring-color: var(--color-accent) !important;
+  transform: scale(1) !important;
+  border-color: var(--color-accent) !important;
+  border: 0px solid !important;
+  margin: 3px !important;
+}

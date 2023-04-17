@@ -5,14 +5,15 @@
   overflow: hidden;
   text-overflow: ellipsis;
   outline: 0px solid var(--colorPrimary);
-  &:hover{
+
+  &:hover {
     outline: 2px solid var(--colorPrimary);
   }
 }
 
 #txt2img_generate,
 #img2img_generate {
-	background: var(--button-primary-background-fill) !important;
+  background: var(--button-primary-background-fill) !important;
 
   &:hover {
     background: var(--button-secondary-background-fill) !important;
@@ -21,7 +22,7 @@
   &:active {
     background: var(--colorErrorActive) !important;
   }
-  
+
 }
 
 #txt2img_interrupt,
@@ -52,4 +53,85 @@
 #txt2img_skip,
 #img2img_skip {
   border-radius: 0 var(--borderRadius) var(--borderRadius) 0 !important;
+}
+
+/* Smaller styles buttons */
+#txt2img_styles button,
+#img2img_styles button {
+  min-height: 25px;
+  height: 25px;
+}
+
+/* Settings buttons */
+#settings button.svelte-1g805jl {
+  border-radius: 0px;
+  border-top-left-radius: var(--container-radius);
+  border-bottom-left-radius: var(--container-radius);
+}
+
+/* Inpainting/Sketch Buttons */
+button[aria-label] {
+  border: 1px solid var(--colorAccent) !important;
+  stroke-width: 1.5 !important;
+
+  & svg {
+    stroke: #fff !important;
+    accent-color: #fff !important;
+    fill: #ffffff00 !important;
+  }
+
+  & path {
+    stroke: #fff !important;
+    accent-color: #fff !important;
+    fill: #ffffff00 !important;
+  }
+
+  & circle {
+    stroke: #fff !important;
+    accent-color: #fff !important;
+    fill: #ffffff00 !important;
+  }
+
+  &:hover {
+    color: var(--colorPrimary) !important;
+    border: 1px solid var(--colorPrimary) !important;
+    stroke-width: 2 !important;
+
+    & svg {
+      stroke: var(--colorPrimary) !important;
+      accent-color: var(--colorPrimary) !important;
+      fill: #ffffff00 !important;
+    }
+
+    & path {
+      stroke: var(--colorPrimary) !important;
+      accent-color: var(--colorPrimary) !important;
+      fill: #ffffff00 !important;
+    }
+
+    & circle {
+      stroke: var(--colorPrimary) !important;
+      accent-color: var(--colorPrimary) !important;
+      fill: #ffffff00 !important;
+    }
+  }
+}
+
+/* Interrogate buttons */
+#interrogate,
+#deepbooru {
+  max-height: 84px;
+  flex-grow: 0.5;
+}
+
+/* Fix styles refresh size */
+button#refresh_txt2img_styles,
+button#refresh_img2img_styles {
+  margin-bottom: 5px !important;
+  min-height: 20px !important;
+  height: 20px !important;
+  min-width: 20px !important;
+  width: 20px !important;
+  padding: 0px !important;
+  margin-right: 4px !important;
 }
