@@ -1184,10 +1184,17 @@ button[aria-label]:hover circle {
   fill: #ffffff00 !important;
 }
 /* Interrogate buttons */
-#interrogate,
-#deepbooru {
-  max-height: 84px;
-  flex-grow: 0.5;
+.interrogate-col {
+  min-width: 0 !important;
+  max-width: 100%;
+  gap: 0.5em;
+  flex-flow: row !important;
+}
+.interrogate-col #interrogate,
+.interrogate-col #deepbooru {
+  /* max-height: 84px; */
+  /* flex-grow: 0.5; */
+  margin-bottom: var(--layout-gap);
 }
 /* Fix styles refresh size */
 button#refresh_txt2img_styles,
@@ -1272,36 +1279,17 @@ textarea:hover {
   backdrop-filter: blur(24px);
   display: inline-block;
 }
-#txt2img_prompt_container {
+#txt2img_prompt_container,
+#img2img_prompt_container {
   flex-flow: row wrap;
 }
-#txt2img_prompt_container > div {
+#txt2img_prompt_container > div,
+#img2img_prompt_container > div {
   width: 1px;
   flex-grow: 1;
 }
 @media screen and (max-width: 725px) {
-  #txt2img_prompt_container > div {
-    width: 100% !important;
-  }
-}
-#img2img_prompt_container {
-  flex-flow: row wrap;
-}
-#img2img_prompt_container > button {
-  width: 1px;
-  flex-grow: 0.1;
-  min-width: fit-content;
-}
-@media screen and (max-width: 1000px) {
-  #img2img_prompt_container > button {
-    width: 100% !important;
-  }
-}
-#img2img_prompt_container > div {
-  width: 1px !important;
-  flex-grow: 1;
-}
-@media screen and (max-width: 1000px) {
+  #txt2img_prompt_container > div,
   #img2img_prompt_container > div {
     width: 100% !important;
   }

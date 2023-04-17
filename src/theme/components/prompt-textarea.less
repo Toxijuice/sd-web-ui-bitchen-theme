@@ -23,36 +23,14 @@
   display: inline-block;
 }
 
-#txt2img_prompt_container {
+#txt2img_prompt_container,
+#img2img_prompt_container {
   flex-flow: row wrap;
   & > div{
     width: 1px;
     flex-grow: 1;
 
     @media screen and (max-width: 725px) {
-      width: 100% !important;
-    }
-  }
-}
-
-#img2img_prompt_container {
-  flex-flow: row wrap;
-
-  & > button{
-    width: 1px;
-    flex-grow: 0.1;
-    min-width: fit-content;
-
-    @media screen and (max-width: 1000px) {
-      width: 100% !important;
-    }
-  }
-
-  & > div{
-    width: 1px !important;
-    flex-grow: 1;
-
-    @media screen and (max-width: 1000px) {
       width: 100% !important;
     }
   }

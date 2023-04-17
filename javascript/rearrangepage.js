@@ -20,6 +20,20 @@ class PageRearranger {
             }
         }
 
+        function safeinsertchild(parent, child) {
+            if (parent !== null && child !== null) {
+                parent.insertBefore(child, parent.firstChild);
+            } else {
+                if (parent === null) {
+                    console.error("Can't append child, parent is null.");
+                }
+                if (child === null) {
+                    console.error("Can't append child, child is null.");
+                }
+            }
+        }
+
+
         //txt2img
         var txt2imgtoprow = document.getElementById("txt2img_toprow");
         var txt2imgtoprowparent = txt2imgtoprow.parentElement;
@@ -64,7 +78,6 @@ class PageRearranger {
         safereparent(txt2imgpromptcontainer, txt2imgnegprompt);
 
         safereparent(txt2imgtoprowparent, txt2imgactions);
-        // safereparent(txt2imgtoprowparent, txt2imgtools);
 
         //img2img
         var img2imgtoprow = document.getElementById("img2img_toprow");
@@ -94,9 +107,9 @@ class PageRearranger {
         var img2imgdeepbooru = document.getElementById("deepbooru");
         var img2imginterrogate = document.getElementById("interrogate");
         var img2imginterrogatecol = img2imginterrogate.parentElement;
-
+        
         safereparent(img2imgbottomhalf, img2imgsettingspanel);
-
+        
         safereparent(img2imgstylespanel, img2imgstylesrefresh);
         safereparent(img2imgstylespanel, img2imgstyleslabel);
 
@@ -110,16 +123,15 @@ class PageRearranger {
         safereparent(img2imgresultspanel, img2imgpromptdetails);
         safereparent(img2imgresultspanel, img2imgpresetmanager);
 
-        safereparent(img2imgpromptcontainer, img2imginterrogate);
-        safereparent(img2imgpromptcontainer, img2imgdeepbooru);
+        
         safereparent(img2imgpromptcontainer, img2imgprompt);
         safereparent(img2imgpromptcontainer, img2imgnegprompt);
 
         safereparent(img2imgtoprow, img2imgpromptcontainer);
         
-        safereparent(img2imgtoprowparent, img2imginterrogatecol);
         safereparent(img2imgtoprowparent, img2imgactions);
-        // safereparent(img2imgtoprowparent, img2imgtools);
+
+        safeinsertchild(img2imgsettingspanel, img2imginterrogatecol);
     }
 }
 

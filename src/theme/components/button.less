@@ -118,10 +118,17 @@ button[aria-label] {
 }
 
 /* Interrogate buttons */
-#interrogate,
-#deepbooru {
-  max-height: 84px;
-  flex-grow: 0.5;
+.interrogate-col {
+  min-width: 0 !important;
+  max-width: 100%;
+  gap: 0.5em;
+  flex-flow: row !important;
+
+  #interrogate, #deepbooru {
+    /* max-height: 84px; */
+    /* flex-grow: 0.5; */
+    margin-bottom: var(--layout-gap);
+  }
 }
 
 /* Fix styles refresh size */
