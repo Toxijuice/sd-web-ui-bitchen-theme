@@ -1,7 +1,10 @@
 [id$='2img_prompt'] textarea {
   color: #abef3edf !important;
-  max-height: 84px;
+  min-height: 45px;
+  max-height: 220px;
   overflow-y: auto;
+
+  margin-right: calc(var(--spacing-lg) * -1);
 
   &:focus {
     color: #d5ff92ff !important;
@@ -10,7 +13,8 @@
 
 [id$='2img_neg_prompt'] textarea {
   color: #ea394ddf !important;
-  max-height: 84px;
+  min-height: 45px;
+  max-height: 220px;
   overflow-y: auto;
 
   &:focus {
@@ -26,9 +30,11 @@
 #txt2img_prompt_container,
 #img2img_prompt_container {
   flex-flow: row wrap;
-  & > div{
+
+  &>div {
     width: 1px;
-    flex-grow: 1;
+    flex-grow: 0.50;
+    margin-right: calc(var(--spacing-lg) * -1);
 
     @media screen and (max-width: 725px) {
       width: 100% !important;

@@ -1227,6 +1227,11 @@ button#refresh_img2img_styles {
 .gradio-dropdown div.wrap {
   border: solid 1px var(--colorPrimaryBorderHover) !important;
 }
+.gradio-dropdown div.wrap:active,
+.gradio-dropdown div.wrap:focus,
+.gradio-dropdown div.wrap:focus-within {
+  box-shadow: var(--input-shadow-focus) !important;
+}
 table {
   border-collapse: collapse;
 }
@@ -1261,15 +1266,18 @@ textarea:hover {
 }
 [id$='2img_prompt'] textarea {
   color: #abef3edf !important;
-  max-height: 84px;
+  min-height: 45px;
+  max-height: 220px;
   overflow-y: auto;
+  margin-right: calc(var(--spacing-lg) * -1);
 }
 [id$='2img_prompt'] textarea:focus {
   color: #d5ff92ff !important;
 }
 [id$='2img_neg_prompt'] textarea {
   color: #ea394ddf !important;
-  max-height: 84px;
+  min-height: 45px;
+  max-height: 220px;
   overflow-y: auto;
 }
 [id$='2img_neg_prompt'] textarea:focus {
@@ -1286,7 +1294,8 @@ textarea:hover {
 #txt2img_prompt_container > div,
 #img2img_prompt_container > div {
   width: 1px;
-  flex-grow: 1;
+  flex-grow: 0.5;
+  margin-right: calc(var(--spacing-lg) * -1);
 }
 @media screen and (max-width: 725px) {
   #txt2img_prompt_container > div,
