@@ -37,14 +37,16 @@
     width: 258px;
     height: 45px;
     margin-right: 0px;
+
     @media screen and (max-width: 800px) {
       margin-right: -258px !important;
     }
+
     @media screen and (max-width: 500px) {
       margin-right: -360px !important;
     }
   }
-  
+
   svg#logo-main-svg {
     position: fixed;
     height: 66px;
@@ -54,8 +56,8 @@
       height: 29px;
       margin-top: calc(100vh - 29px - 29px);
       margin-left: -12px;
-      
-      background:#000000;
+
+      background: #000000;
       box-shadow:
         0px 0px 0px 5px #000000,
         144px 0px 0px 5px #000000,
@@ -75,7 +77,7 @@
   }
 
   #logo-main-title,
-  #logo-main-subtitle{
+  #logo-main-subtitle {
     @media screen and (max-width: 800px) {
       display: none;
       visibility: hidden;
@@ -87,23 +89,23 @@
     }
   }
 
-  #logo-main-icon-0{
+  #logo-main-icon-0 {
     fill: var(--colorLogoMain0);
   }
 
-  #logo-main-icon-1{
+  #logo-main-icon-1 {
     fill: var(--colorLogoMain1);
   }
 
-  #logo-main-icon-2{
+  #logo-main-icon-2 {
     fill: var(--colorLogoMain2);
   }
 
-  #logo-main-icon-3{
+  #logo-main-icon-3 {
     fill: var(--colorLogoMain3);
   }
 
-  #logo-main-icon-4{
+  #logo-main-icon-4 {
     fill: var(--colorLogoMain4);
   }
 
@@ -112,16 +114,15 @@
     min-height: 16px;
   }
 
-  > div:not(#logo-main-div),
-  > fieldset {
+  >div:not(#logo-main-div),
+  >fieldset {
     min-width: 32px !important;
+
     @media screen and (max-width: 640px) {
       flex: 1;
       max-width: 49%;
     }
   }
-
-
 
   ul.options {
 
@@ -135,14 +136,14 @@
 }
 
 #tabs {
-  > .tabitem {
+  >.tabitem {
     background: transparent;
     border: none;
     padding: var(--padding);
     margin-top: 118px;
   }
 
-  > .tab-nav:first-child {
+  >.tab-nav:first-child {
     position: fixed;
     top: 90px;
     z-index: 999;
@@ -150,6 +151,7 @@
     overflow-y: auto;
     width: 100%;
     border: none;
+
     &::before {
       content: '';
       display: block;
@@ -164,15 +166,17 @@
       z-index: -1;
     }
 
-    > button {
+    >button {
       border: none;
       border-bottom: 2px solid transparent !important;
       flex: none;
+      transition: var(--baseTransition) !important;
 
       &:hover {
         border: none;
         border-bottom: 2px solid var(--colorPrimary) !important;
         flex: none;
+        transition: var(--hoverTransition) !important;
       }
 
       &.selected {
@@ -183,4 +187,3 @@
     }
   }
 }
-
