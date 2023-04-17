@@ -59,10 +59,10 @@ class PageRearranger {
         safereparent(txt2imgresultspanel, txt2imggallerybuttons);
         safereparent(txt2imgresultspanel, txt2imgdownloadpanel);
         safereparent(txt2imgresultspanel, txt2imgpromptdetails);
+        safereparent(txt2imgresultspanel, txt2imgpresetmanager);
 
         safereparent(txt2imgpromptcontainer, txt2imgnegprompt);
 
-        safereparent(txt2imgtoprowparent, txt2imgpresetmanager);
         safereparent(txt2imgtoprowparent, txt2imgactions);
         // safereparent(txt2imgtoprowparent, txt2imgtools);
 
@@ -108,13 +108,13 @@ class PageRearranger {
         safereparent(img2imgresultspanel, img2imggallerybuttons);
         safereparent(img2imgresultspanel, img2imgdownloadpanel);
         safereparent(img2imgresultspanel, img2imgpromptdetails);
+        safereparent(img2imgresultspanel, img2imgpresetmanager);
 
         safereparent(img2imgpromptcontainer, img2imginterrogate);
         safereparent(img2imgpromptcontainer, img2imgdeepbooru);
         safereparent(img2imgpromptcontainer, img2imgprompt);
         safereparent(img2imgpromptcontainer, img2imgnegprompt);
 
-        safereparent(img2imgtoprowparent, img2imgpresetmanager);
         safereparent(img2imgtoprow, img2imgpromptcontainer);
         
         safereparent(img2imgtoprowparent, img2imginterrogatecol);
