@@ -132,6 +132,16 @@ class BitchenColorManager {
         return hue + 1.00;
     }
 
+    Lerp(a, b, t) {
+        return (1 - t) * a + t * b;
+    }
+
+    SetColLerpRGB(tarCol, colA, colB, t) {
+        tarCol.r = this.Lerp(colA.r, colB.r, t);
+        tarCol.g = this.Lerp(colA.g, colB.g, t);
+        tarCol.b = this.Lerp(colA.b, colB.b, t);
+    }
+
     SetColorScheme(hueMain, hueAccent) {
         hueMain = this.CorrectHue(hueMain);
         hueAccent = this.CorrectHue(hueAccent);
@@ -140,10 +150,11 @@ class BitchenColorManager {
         this.SetColHSVtoRGB(this.colAccent, hueAccent, 0.90, 0.75);
         this.SetColHSVtoRGB(this.colTextbox, hueMain, 1.00, 0.075);
         this.SetColHSVtoRGB(this.collogo0, hueMain, 0.80, 0.90);
-        this.SetColHSVtoRGB(this.collogo1, hueMain + (this.hueDist * 0.40), 0.85, 0.70);
-        this.SetColHSVtoRGB(this.collogo2, hueMain + (this.hueDist * 0.60), 0.90, 0.60);
-        this.SetColHSVtoRGB(this.collogo3, hueMain + (this.hueDist * 0.80), 0.95, 0.50);
         this.SetColHSVtoRGB(this.collogo4, hueAccent, 1.00, 0.40);
+
+        this.SetColLerpRGB(this.collogo1, this.collogo0, this.collogo4, 0.40);
+        this.SetColLerpRGB(this.collogo2, this.collogo0, this.collogo4, 0.60);
+        this.SetColLerpRGB(this.collogo3, this.collogo0, this.collogo4, 0.80);
 
         // this.col75.r = this.col.r * 0.75;
         // this.col75.g = this.col.g * 0.75;
