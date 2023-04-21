@@ -94,7 +94,9 @@ onUiTabChange(() => {
             if (bitchenColorManager !== null) {
 
                 bitchenColorManager.colorCycleEnabled = e.target.checked;
-                if (!bitchenColorManager.colorCycleEnabled) {
+                if (bitchenColorManager.colorCycleEnabled) {
+                    BitchenStartColorLoop();
+                }else{
                     bitchenColorManager.SetHue(bitchenColorManager.hueBaseWaiting);
                 }
             }

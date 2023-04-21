@@ -27,6 +27,10 @@ class BitchenColorManager {
         this.collogo3 = { r: 0, g: 0, b: 0 };
         this.collogo4 = { r: 0, g: 0, b: 0 };
 
+        this.dt = 0;
+        this.lasttime = 0;
+        this.elapsedms = 0;
+
         this.hsvvars = { r: 0, g: 0, b: 0, i: 0, f: 0, p: 0, q: 0, t: 0 } // Frequently reused vars
     }
 
@@ -333,6 +337,28 @@ class BitchenColorManager {
 
 }
 
+
+
+function BitchenColorLoop(timestamp) {
+    if (bitchenColorManager.colorCycleEnabled) {
+        bitchenColorManager.dt = timestamp - bitchenColorManager.lasttime;
+        bitchenColorManager.elapsedms += bitchenColorManager.dt;
+        bitchenColorManager.lasttime = timestamp;
+
+        if (bitchenColorManager.elapsedms >= bitchenColorManager.throttlems) {
+            bitchenColorManager.Update(bitchenColorManager.elapsedms);
+            bitchenColorManager.elapsedms = 0;
+        }
+
+        window.requestAnimationFrame(BitchenColorLoop); // continue loop
+    }
+    // No loop if not enabled
+}
+
+function BitchenStartColorLoop() {
+    window.requestAnimationFrame(BitchenColorLoop); // start loop
+}
+
 document.addEventListener('DOMContentLoaded', () => {
     bitchenColorManager = new BitchenColorManager();
     bitchenColorManager.SetDefaultTheme();
@@ -346,32 +372,16 @@ document.addEventListener('DOMContentLoaded', () => {
     fetch('./file=config.json')
         .then((response) => response.json())
         .then((config) => {
-
             bitchenColorManager.SetHue(GetConfigValue(bitchenColorManager, config, 'hueBase', 'bitchen_base_hue'))
             bitchenColorManager.SetHueDist(GetConfigValue(bitchenColorManager, config, 'hueDist', 'bitchen_dist_hue'))
             bitchenColorManager.SetFramerate(GetConfigValue(bitchenColorManager, config, 'animfps', 'bitchen_color_cycle_framerate'))
             bitchenColorManager.SetCycleSpeed(GetConfigValue(bitchenColorManager, config, 'cyclespeed', 'bitchen_color_cycle_speed'))
             bitchenColorManager.colorCycleEnabled = config['bitchen_color_cycle']
 
-            var dt = 0;
-            var lasttime = 0;
-            var elapsedms = 0;
+            bitchenColorManager.dt = 0;
+            bitchenColorManager.lasttime = 0;
+            bitchenColorManager.elapsedms = 0;
 
-            function loop(timestamp) {
-                if (bitchenColorManager.colorCycleEnabled) {
-                    dt = timestamp - lasttime;
-                    elapsedms += dt;
-                    lasttime = timestamp;
-
-                    if (elapsedms >= bitchenColorManager.throttlems) {
-                        bitchenColorManager.Update(elapsedms);
-                        elapsedms = 0;
-                    }
-                }
-
-                window.requestAnimationFrame(loop); // continue loop
-            }
-
-            window.requestAnimationFrame(loop); // start loop
+            BitchenStartColorLoop();
         });
 });
