@@ -851,6 +851,23 @@ template {
   content: '';
   display: none;
 }
+@media screen and (max-width: 500px) {
+  #quicksettings {
+    position: relative;
+    top: 25px;
+    display: flex;
+    flex-flow: column wrap;
+    align-content: space-between;
+    align-items: flex-start;
+  }
+  #quicksettings > div:not(#logo-main-div),
+  #quicksettings > button {
+    display: block;
+    width: 100%;
+    max-width: 93% !important;
+    margin-bottom: -10px;
+  }
+}
 #quicksettings #logo-main-div {
   width: 258px;
   height: 45px;
@@ -863,7 +880,14 @@ template {
 }
 @media screen and (max-width: 500px) {
   #quicksettings #logo-main-div {
-    margin-right: -360px !important;
+    background: black;
+    width: 100%;
+    max-width: 100%;
+    display: block;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 96%;
   }
 }
 #quicksettings svg#logo-main-svg {
@@ -873,12 +897,9 @@ template {
 }
 @media screen and (max-width: 500px) {
   #quicksettings svg#logo-main-svg {
-    height: 29px;
-    margin-top: calc(100vh - 29px - 29px);
-    margin-left: -12px;
-    background: #000000;
-    box-shadow: 0px 0px 0px 5px #000000, 144px 0px 0px 5px #000000, 288px 0px 0px 5px #000000, 432px 0px 0px 5px #000000;
-    opacity: 90%;
+    height: 28px;
+    margin-top: 2px;
+    margin-left: 4px;
   }
 }
 #quicksettings #logo-main-title {
@@ -944,6 +965,11 @@ template {
   padding: var(--padding);
   margin-top: 118px;
 }
+@media screen and (max-width: 500px) {
+  #tabs > .tabitem {
+    margin-top: 25px;
+  }
+}
 #tabs > .tab-nav:first-child {
   position: fixed;
   top: 90px;
@@ -952,6 +978,17 @@ template {
   overflow-y: auto;
   width: 100%;
   border: none;
+}
+@media screen and (max-width: 500px) {
+  #tabs > .tab-nav:first-child {
+    z-index: 1001;
+    position: fixed;
+    top: 0px;
+  }
+  #tabs > .tab-nav:first-child::before {
+    height: 30px !important;
+    backdrop-filter: none !important;
+  }
 }
 #tabs > .tab-nav:first-child::before {
   content: '';
@@ -1126,6 +1163,19 @@ input[type='range']:active::-ms-thumb {
 #img2img_generate:active {
   background: var(--colorErrorActive) !important;
 }
+@media screen and (max-width: 500px) {
+  #txt2img_generate,
+  #img2img_generate {
+    position: fixed;
+    top: calc(148vw + 1px);
+    left: 0vw;
+    right: 0vw;
+    border-radius: 0px !important;
+    z-index: 500;
+    height: 56px;
+    min-height: 56px;
+  }
+}
 #txt2img_interrupt,
 #txt2img_skip,
 #img2img_interrupt,
@@ -1149,12 +1199,44 @@ input[type='range']:active::-ms-thumb {
 }
 #txt2img_interrupt,
 #img2img_interrupt {
-  border-radius: var(--borderRadius) 0 0 var(--borderRadius) !important;
+  border-radius: var(--borderRadius) 0 0 var(--borderRadius);
+  border-top-right-radius: 0 !important;
+  border-bottom-right-radius: 0 !important;
   border-right: 1px solid var(--colorErrorBg);
 }
 #txt2img_skip,
 #img2img_skip {
-  border-radius: 0 var(--borderRadius) var(--borderRadius) 0 !important;
+  border-radius: 0 var(--borderRadius) var(--borderRadius) 0;
+  border-top-left-radius: 0 !important;
+  border-bottom-left-radius: 0 !important;
+}
+@media screen and (max-width: 500px) {
+  #txt2img_interrupt,
+  #img2img_interrupt {
+    transition: none !important;
+    position: fixed;
+    top: calc(148vw + 1px);
+    left: 0vw;
+    right: 50vw;
+    z-index: 501;
+    height: 56px;
+    width: 245px;
+    border-radius: 0px !important;
+  }
+}
+@media screen and (max-width: 500px) {
+  #txt2img_skip,
+  #img2img_skip {
+    transition: none !important;
+    position: fixed;
+    top: calc(148vw + 1px);
+    left: 49vw;
+    right: 0vw;
+    z-index: 501;
+    height: 56px;
+    width: 249px;
+    border-radius: 0px !important;
+  }
 }
 /* Smaller styles buttons */
 #txt2img_styles button,

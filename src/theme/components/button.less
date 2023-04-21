@@ -35,6 +35,17 @@
     background: var(--colorErrorActive) !important;
   }
 
+  @media screen and (max-width: 500px) {
+    position: fixed;
+    top: calc(148vw + 1px);
+    left: 0vw;
+    right: 0vw;
+    border-radius: 0px !important;
+    z-index: 500;
+    height: 56px;
+    min-height: 56px;
+  }
+
 }
 
 #txt2img_interrupt,
@@ -58,14 +69,50 @@
 
 #txt2img_interrupt,
 #img2img_interrupt {
-  border-radius: var(--borderRadius) 0 0 var(--borderRadius) !important;
+  border-radius: var(--borderRadius) 0 0 var(--borderRadius);
+  border-top-right-radius: 0 !important;
+  border-bottom-right-radius: 0 !important;
   border-right: 1px solid var(--colorErrorBg);
 }
 
 #txt2img_skip,
 #img2img_skip {
-  border-radius: 0 var(--borderRadius) var(--borderRadius) 0 !important;
+  border-radius: 0 var(--borderRadius) var(--borderRadius) 0;
+  border-top-left-radius: 0 !important;
+  border-bottom-left-radius: 0 !important;
 }
+
+#txt2img_interrupt,
+#img2img_interrupt {
+  @media screen and (max-width: 500px) {
+    transition: none !important;
+    position: fixed;
+    top: calc(148vw + 1px);
+    left: 0vw;
+    right: 50vw;
+    z-index: 501;
+    height: 56px;
+    width: 245px;
+    border-radius: 0px !important;
+  }
+}
+
+#txt2img_skip,
+#img2img_skip {
+  @media screen and (max-width: 500px) {
+    transition: none !important;
+    position: fixed;
+    top: calc(148vw + 1px);
+    left: 49vw;
+    right: 0vw;
+    z-index: 501;
+    height: 56px;
+    width: 249px;
+    border-radius: 0px !important;
+  }
+}
+
+
 
 /* Smaller styles buttons */
 #txt2img_styles button,

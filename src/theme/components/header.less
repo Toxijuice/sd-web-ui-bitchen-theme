@@ -33,6 +33,24 @@
     // }
   }
 
+  @media screen and (max-width: 500px) {
+    position: relative;
+    top: 25px;
+
+    display: flex;
+    flex-flow: column wrap;
+    align-content: space-between;
+    align-items: flex-start;
+
+    > div:not(#logo-main-div),
+    > button{
+      display: block;
+      width: 100%;
+      max-width: 93% !important;
+      margin-bottom: -10px;
+    }
+  }
+
   #logo-main-div {
     width: 258px;
     height: 45px;
@@ -43,7 +61,14 @@
     }
 
     @media screen and (max-width: 500px) {
-      margin-right: -360px !important;
+        background: black;
+        width: 100%;
+        max-width: 100%;
+        display: block;
+        position: fixed;
+        z-index: 1000;
+        left: 0;
+        top: 96%;
     }
   }
 
@@ -53,18 +78,9 @@
     z-index: 1000;
 
     @media screen and (max-width: 500px) {
-      height: 29px;
-      margin-top: calc(100vh - 29px - 29px);
-      margin-left: -12px;
-
-      background: #000000;
-      box-shadow:
-        0px 0px 0px 5px #000000,
-        144px 0px 0px 5px #000000,
-        288px 0px 0px 5px #000000,
-        432px 0px 0px 5px #000000;
-
-      opacity: 90%;
+      height: 28px;
+      margin-top: 2px;
+      margin-left: 4px;
     }
   }
 
@@ -141,6 +157,9 @@
     border: none;
     padding: var(--padding);
     margin-top: 118px;
+    @media screen and (max-width: 500px) {
+      margin-top: 25px;
+    }
   }
 
   >.tab-nav:first-child {
@@ -151,6 +170,17 @@
     overflow-y: auto;
     width: 100%;
     border: none;
+
+    @media screen and (max-width: 500px) {
+      z-index: 1001;
+      position: fixed;
+      top: 0px;
+
+      &::before {
+        height: 30px !important;
+        backdrop-filter: none !important;
+      }
+    }
 
     &::before {
       content: '';
@@ -187,3 +217,4 @@
     }
   }
 }
+
