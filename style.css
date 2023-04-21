@@ -1259,6 +1259,9 @@ button#refresh_img2img_styles {
   padding: 0px !important;
   margin-right: 4px !important;
 }
+.tab-nav button:focus {
+  outline: none !important;
+}
 .gradio-checkbox {
   transition: var(--baseTransition) !important;
 }
