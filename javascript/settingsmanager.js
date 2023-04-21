@@ -50,16 +50,28 @@ onUiTabChange(() => {
     if (!bitchenSettingsInitialized) {
         bitchenSettingsInitialized = true;
 
+        // fetch('./file=config.json')
+        //     .then((response) => response.json())
+        //     .then((config) => {
+        //         console.log(config['bitchen_base_hue'])
+        //         console.log(config['bitchen_color_cycle'])
+        //         console.log(config['bitchen_color_cycle_framerate'])
+        //         console.log(config['bitchen_color_cycle_speed'])
+        //         console.log(config['bitchen_dist_hue'])
+        //         console.log(config['bitchen_img2img_rearrange'])
+        //         console.log(config['bitchen_txt2img_rearrange'])
+        //     });
+
         BitchenSettingsManager.AddSliderListener('setting_bitchen_base_hue', function (e) {
             if (bitchenColorManager !== null) {
                 if (!e.target.value || e.target.value === null) {
-                    if (bitchenColorCycleEnabled) {
+                    if (bitchenColorManager.colorCycleEnabled) {
                         bitchenColorManager.hueBaseWaiting = 0;
                     } else {
                         bitchenColorManager.SetHue(0);
                     }
                 } else {
-                    if (bitchenColorCycleEnabled) {
+                    if (bitchenColorManager.colorCycleEnabled) {
                         bitchenColorManager.hueBaseWaiting = parseFloat(e.target.value);
                     } else {
                         bitchenColorManager.SetHue(parseFloat(e.target.value));
@@ -81,8 +93,8 @@ onUiTabChange(() => {
         BitchenSettingsManager.AddListenerToInput('change', 'setting_bitchen_color_cycle', function (e) {
             if (bitchenColorManager !== null) {
 
-                bitchenColorCycleEnabled = e.target.checked;
-                if (!bitchenColorCycleEnabled) {
+                bitchenColorManager.colorCycleEnabled = e.target.checked;
+                if (!bitchenColorManager.colorCycleEnabled) {
                     bitchenColorManager.SetHue(bitchenColorManager.hueBaseWaiting);
                 }
             }
@@ -108,6 +120,7 @@ onUiTabChange(() => {
             }
         });
 
-        
+
     }
 });
+

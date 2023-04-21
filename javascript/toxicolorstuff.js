@@ -1,8 +1,8 @@
-var bitchenColorCycleEnabled = false;
 var bitchenColorManager = null;
 
 class BitchenColorManager {
     constructor() {
+        this.colorCycleEnabled = false;
         this.roo = document.querySelector(':root');
         this.dark = document.querySelector('.dark');
         this.time = Math.random() * 240; // Random start time between 0 and 4 minutes
@@ -135,8 +135,6 @@ class BitchenColorManager {
     SetColorScheme(hueMain, hueAccent) {
         hueMain = this.CorrectHue(hueMain);
         hueAccent = this.CorrectHue(hueAccent);
-
-        console.log(hueMain, hueAccent);
 
         this.SetColHSVtoRGB(this.col, hueMain, 0.90, 0.75);
         this.SetColHSVtoRGB(this.colAccent, hueAccent, 0.90, 0.75);
@@ -328,24 +326,41 @@ document.addEventListener('DOMContentLoaded', () => {
     bitchenColorManager = new BitchenColorManager();
     bitchenColorManager.SetDefaultTheme();
 
-    var dt = 0;
-    var lasttime = 0;
-    var elapsedms = 0;
-
-    function loop(timestamp) {
-        if (bitchenColorCycleEnabled) {
-            dt = timestamp - lasttime;
-            elapsedms += dt;
-            lasttime = timestamp;
-
-            if (elapsedms >= bitchenColorManager.throttlems) {
-                bitchenColorManager.Update(elapsedms);
-                elapsedms = 0;
-            }
-        }
-
-        window.requestAnimationFrame(loop); // continue loop
+    //Null checking function... Also null returning if all null. Very fun.
+    function GetConfigValue(tarObj, config, tarVal, val) {
+        if (tarObj[tarVal]) return config[val] ? config[val] : tarObj[tarVal]
+        return null
     }
 
-    window.requestAnimationFrame(loop); // start loop
+    fetch('./file=config.json')
+        .then((response) => response.json())
+        .then((config) => {
+
+            bitchenColorManager.SetHue(GetConfigValue(bitchenColorManager, config, 'hueBase', 'bitchen_base_hue'))
+            bitchenColorManager.SetHueDist(GetConfigValue(bitchenColorManager, config, 'hueDist', 'bitchen_dist_hue'))
+            bitchenColorManager.SetFramerate(GetConfigValue(bitchenColorManager, config, 'animfps', 'bitchen_color_cycle_framerate'))
+            bitchenColorManager.SetCycleSpeed(GetConfigValue(bitchenColorManager, config, 'cyclespeed', 'bitchen_color_cycle_speed'))
+            bitchenColorManager.colorCycleEnabled = config['bitchen_color_cycle']
+
+            var dt = 0;
+            var lasttime = 0;
+            var elapsedms = 0;
+
+            function loop(timestamp) {
+                if (bitchenColorManager.colorCycleEnabled) {
+                    dt = timestamp - lasttime;
+                    elapsedms += dt;
+                    lasttime = timestamp;
+
+                    if (elapsedms >= bitchenColorManager.throttlems) {
+                        bitchenColorManager.Update(elapsedms);
+                        elapsedms = 0;
+                    }
+                }
+
+                window.requestAnimationFrame(loop); // continue loop
+            }
+
+            window.requestAnimationFrame(loop); // start loop
+        });
 });

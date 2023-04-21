@@ -89,7 +89,7 @@ def on_ui_settings():
         key="bitchen_txt2img_rearrange",
         info=shared.OptionInfo(
             True,
-            label="Use Alternate txt2img layout",
+            label="Use Alternate txt2img layout (Requires Reload) !!Layout partially broken when disabled!!",
             section=section,
         ),
     )
@@ -98,7 +98,7 @@ def on_ui_settings():
         key="bitchen_img2img_rearrange",
         info=shared.OptionInfo(
             True,
-            label="Use Alternate txt2img layout",
+            label="Use Alternate img2img layout (Requires Reload) !!Layout partially broken when disabled!!",
             section=section,
         ),
     )

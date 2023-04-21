@@ -3,11 +3,9 @@
 // If anyone knows how to rearrange the panels better
 // please let me know. This seems really bad.
 var bitchenTabsRearranged = false;
-var bitchenTxt2imgRearrangeEnabled = true;
-var bitchenImg2imgRearrangeEnabled = true;
 
 class PageRearranger {
-    static rearrangePage() {
+    static rearrangePage(txt2imgrearrange, img2imgrearrange) {
         function safereparent(parent, child) {
             if (parent !== null && child !== null) {
                 parent.appendChild(child);
@@ -35,7 +33,7 @@ class PageRearranger {
         }
 
         //txt2img
-        if (bitchenTxt2imgRearrangeEnabled) {
+        if (txt2imgrearrange) {
             var txt2imgtoprow = document.getElementById("txt2img_toprow");
             var txt2imgtoprowparent = txt2imgtoprow.parentElement;
             var txt2imgresultspanel = document.getElementById("txt2img_results");
@@ -80,9 +78,9 @@ class PageRearranger {
 
             safereparent(txt2imgtoprowparent, txt2imgactions);
         }
-        
+
         //img2img
-        if (bitchenImg2imgRearrangeEnabled) {
+        if (img2imgrearrange) {
             var img2imgtoprow = document.getElementById("img2img_toprow");
             var img2imgtoprowparent = img2imgtoprow.parentElement;
             var img2imgresultspanel = document.getElementById("img2img_results");
@@ -110,9 +108,9 @@ class PageRearranger {
             var img2imgdeepbooru = document.getElementById("deepbooru");
             var img2imginterrogate = document.getElementById("interrogate");
             var img2imginterrogatecol = img2imginterrogate.parentElement;
-        
+
             safereparent(img2imgbottomhalf, img2imgsettingspanel);
-        
+
             safereparent(img2imgstylespanel, img2imgstylesrefresh);
             safereparent(img2imgstylespanel, img2imgstyleslabel);
 
@@ -126,12 +124,12 @@ class PageRearranger {
             safereparent(img2imgresultspanel, img2imgpromptdetails);
             safereparent(img2imgresultspanel, img2imgpresetmanager);
 
-        
+
             safereparent(img2imgpromptcontainer, img2imgprompt);
             safereparent(img2imgpromptcontainer, img2imgnegprompt);
 
             safereparent(img2imgtoprow, img2imgpromptcontainer);
-        
+
             safereparent(img2imgtoprowparent, img2imgactions);
 
             safeinsertchild(img2imgsettingspanel, img2imginterrogatecol);
@@ -141,7 +139,12 @@ class PageRearranger {
 
 onUiTabChange(() => {
     if (!bitchenTabsRearranged) {
-        PageRearranger.rearrangePage();
+        fetch('./file=config.json')
+            .then((response) => response.json())
+            .then((config) => {
+                PageRearranger.rearrangePage(config['bitchen_txt2img_rearrange'], config['bitchen_img2img_rearrange']);
+            });
+
         bitchenTabsRearranged = true;
     }
 });
