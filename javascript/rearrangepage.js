@@ -142,7 +142,13 @@ onUiTabChange(() => {
         fetch('./file=config.json')
             .then((response) => response.json())
             .then((config) => {
-                PageRearranger.rearrangePage(config['bitchen_txt2img_rearrange'], config['bitchen_img2img_rearrange']);
+
+                var txt2imgEnabled = config['bitchen_txt2img_rearrange']
+                var img2imgEnabled = config['bitchen_img2img_rearrange']
+                if (!('bitchen_txt2img_rearrange' in config)) txt2imgEnabled = true; //Default to true
+                if (!('bitchen_img2img_rearrange' in config)) img2imgEnabled = true; //Default to true
+
+                PageRearranger.rearrangePage(txt2imgEnabled, img2imgEnabled);
             });
 
         bitchenTabsRearranged = true;
