@@ -1667,3 +1667,31 @@ div.svelte-1oo81b7 > * + *:not(.absolute):not(#html_log_txt2img):not(#html_log_i
     margin-bottom: 5vh !important;
   }
 }
+/* Fix generate context menu */
+#context-menu {
+  z-index: 9999;
+  position: absolute;
+  display: block;
+  padding: 0px 0;
+  border: 2px solid var(--colorPrimary);
+  border-radius: 8px;
+  box-shadow: 1px 1px 16px var(--colorAccent);
+  width: 200px;
+  background: var(--colorFillTertiary) !important;
+}
+@media screen and (max-width: 500px) {
+  #context-menu {
+    position: fixed;
+    left: 2% !important;
+    width: 95% !important;
+    margin-top: -90px;
+  }
+}
+/* Fix generate context menu hover*/
+.context-menu-items a {
+  transition: var(--baseTransition) !important;
+}
+.context-menu-items a:hover {
+  background: var(--colorPrimary);
+  transition: var(--hoverTransition) !important;
+}
