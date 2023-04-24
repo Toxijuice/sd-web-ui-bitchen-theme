@@ -71,3 +71,12 @@ div.svelte-1oo81b7>*+*:not(.absolute):not(#html_log_txt2img):not(#html_log_img2i
 #img2img_styles {
   margin-top: -18px;
 }
+
+/* Fix small-window footer */
+#footer{
+  margin-bottom: 0;
+  
+  @media screen and (max-width: 500px) {
+    margin-bottom: 5vh !important;
+  }
+}

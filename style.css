@@ -883,11 +883,12 @@ template {
     background: black;
     width: 100%;
     max-width: 100%;
+    left: 0;
+    bottom: 0;
+    height: 4vh;
     display: block;
     position: fixed;
     z-index: 1000;
-    left: 0;
-    top: 96%;
   }
 }
 #quicksettings svg#logo-main-svg {
@@ -898,8 +899,8 @@ template {
 @media screen and (max-width: 500px) {
   #quicksettings svg#logo-main-svg {
     height: 28px;
-    margin-top: 2px;
-    margin-left: 4px;
+    bottom: 2px;
+    left: 4px;
   }
 }
 #quicksettings #logo-main-title {
@@ -1167,13 +1168,14 @@ input[type='range']:active::-ms-thumb {
   #txt2img_generate,
   #img2img_generate {
     position: fixed;
-    top: calc(148vw + 1px);
+    bottom: 4vh;
     left: 0vw;
-    right: 0vw;
-    border-radius: 0px !important;
-    z-index: 500;
+    width: 100%;
     height: 56px;
     min-height: 56px;
+    z-index: 500;
+    border-radius: 0px !important;
+    transition: none !important;
   }
 }
 #txt2img_interrupt,
@@ -1215,12 +1217,11 @@ input[type='range']:active::-ms-thumb {
   #img2img_interrupt {
     transition: none !important;
     position: fixed;
-    top: calc(148vw + 1px);
-    left: 0vw;
-    right: 50vw;
+    bottom: 4vh;
+    left: 0;
+    width: 50%;
     z-index: 501;
     height: 56px;
-    width: 245px;
     border-radius: 0px !important;
   }
 }
@@ -1229,12 +1230,11 @@ input[type='range']:active::-ms-thumb {
   #img2img_skip {
     transition: none !important;
     position: fixed;
-    top: calc(148vw + 1px);
-    left: 49vw;
-    right: 0vw;
+    bottom: 4vh;
+    right: 0;
+    width: 50%;
     z-index: 501;
     height: 56px;
-    width: 249px;
     border-radius: 0px !important;
   }
 }
@@ -1657,4 +1657,13 @@ div.svelte-1oo81b7 > * + *:not(.absolute):not(#html_log_txt2img):not(#html_log_i
 #txt2img_styles,
 #img2img_styles {
   margin-top: -18px;
+}
+/* Fix small-window footer */
+#footer {
+  margin-bottom: 0;
+}
+@media screen and (max-width: 500px) {
+  #footer {
+    margin-bottom: 5vh !important;
+  }
 }
